@@ -1,6 +1,6 @@
 import Image from "next/image";
 import "./globals.css";
-import Upload from "../ui/Components/Upload";
+import Upload from "../../ui/Components/Upload";
 
 export default function Home() {
   return (

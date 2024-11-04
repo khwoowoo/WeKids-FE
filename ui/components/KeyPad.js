@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export default function KeyPad({
     buttonWidth = 'w-24',
     buttonHeight = 'h-12',
-    fontFamily = 'Arial, sans-serif',
+    fontFamily = 'WooridaumR, Arial, sans-serif',
     fontSize = '1rem',
     number = () => {}
 }) {

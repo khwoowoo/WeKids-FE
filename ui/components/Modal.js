@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Modal({ isOpen, onClose, children, width = '30%', height = '80vh', translateY = '0%' }) {
+export default function Modal({ isOpen, onClose, children, width = '30%', height = '70vh', translateY = '0%' }) {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         if (isOpen) {
             setIsVisible(true);
         } else {
-            setTimeout(() => setIsVisible(false), 300);
+            setIsVisible(false);
         }
     }, [isOpen]);
 
@@ -16,7 +16,7 @@ export default function Modal({ isOpen, onClose, children, width = '30%', height
     return (
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center z-50">
             <div
-                className={`bg-white rounded-t-3xl shadow-lg p-6 transform transition-transform duration-500 ease-in-out ${
+                className={`bg-white rounded-t-3xl p-6 transform transition-transform duration-500 ease-in-out ${
                     isOpen ? "translate-y-0" : "translate-y-full"
                 } absolute bottom-0`}
                 style={{ width, height, transform: `translateY(${translateY})` }}

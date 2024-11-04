@@ -1,4 +1,4 @@
-export default function TransactionBox({ date, description, amount, balance, tag, width = "max-w-md", paddingY = "py-6"  }) {
+export default function TransactionBox({ date, description, type, amount, balance, tag, width = "max-w-md", paddingY = "py-6"  }) {
     return (
         <div className={`w-full ${width}`}>
           <div className={`flex border px-4 ${paddingY} shadow-sm bg-white`}>
@@ -14,8 +14,8 @@ export default function TransactionBox({ date, description, amount, balance, tag
             </div>
 
             <div className="text-right flex-shrink-0">
-              <span className={`block text-lg font-semibold ${amount < 0 ? 'text-black-500' : 'text-blue-500'}`}>
-                {amount < 0 ? `-${Math.abs(amount).toLocaleString()}원` : `₩${amount.toLocaleString()}원`}
+              <span className={`block text-lg font-semibold ${type == "출금" ? 'text-black-500' : 'text-blue-500'}`}>
+                {type == "출금" ? `-${amount.toLocaleString()}원` : `${amount.toLocaleString()}원`}
               </span>
               <span className="text-xs text-gray-500">{balance.toLocaleString()}원</span>
             </div>

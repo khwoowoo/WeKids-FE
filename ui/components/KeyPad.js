@@ -8,6 +8,12 @@ export default function KeyPad({
     number = () => {}
 }) {
     const [selected_number, setSelected_Number] = useState(null);
+    const buttons = [
+        '1', '2', '3', 
+        '4', '5', '6', 
+        '7', '8', '9', 
+        '00', '0', '⌫'
+    ];
 
     useEffect(() => {
         number(selected_number);
@@ -21,18 +27,15 @@ export default function KeyPad({
     return (
         <div className="flex">
             <div className="grid grid-cols-3 bg-white">
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>1</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>2</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>3</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>4</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>5</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>6</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>7</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>8</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>9</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>00</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>0</button>
-                <button className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} onClick={onClick}>⌫</button>
+            {buttons.map((button, index) => (
+                <button 
+                    key={index}
+                    className={`keypad-button ${buttonWidth} ${buttonHeight} text-center border`} 
+                    onClick={onClick}
+                >
+                    {button}
+                </button>
+            ))}
             </div>
             <style jsx>{`
                 .keypad-button {
@@ -40,7 +43,8 @@ export default function KeyPad({
                     font-size: ${fontSize};
                     font-weight: normal;
                 }
-            `}</style>
+            `}
+            </style>
         </div>
     );
 }

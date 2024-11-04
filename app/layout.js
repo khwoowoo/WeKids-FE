@@ -10,9 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className={`antialiased`}>
-        <div className="wrapper">
-          {children}
-        </div>
+        <div className="wrapper">{children}</div>
       </body>
     </html>
   );

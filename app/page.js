@@ -1,6 +1,7 @@
 import Image from "next/image";
 import "./globals.css";
-import Upload from "../../ui/Components/Upload";
+import "../ui/Components/Upload";
+import Upload from "../ui/Components/Upload";
 
 export default function Home() {
   return (
@@ -8,8 +9,6 @@ export default function Home() {
       <h1 className="wooridaumL">Hello World적용됨????</h1>
       <p className="wooridaumB">여기에만 적용하고 싶어요</p>
       <Upload />
-
-      <image>sr</image>
 
       <p>
         모든 국민은 고문을 받지 아니하며, 형사상 자기에게 불리한 진술을

@@ -4,10 +4,12 @@ const Rectangle = () => {
     return (
       <div
         style={{
-          width: '100%',
-          height: '60px',
+          width: '400px',   
+          height: '60px',      
           backgroundColor: '#FFFFFF',
           borderRadius: '4px',
+          border: '1px solid #E0E0E0',
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         }}
       />
     );

@@ -2,11 +2,10 @@
 
 import TopBar from "@/src/ui/Components/transactions/transavtions-history/TopBar";
 import { TransactionFilter } from "@/src/ui/Components/transactions/transavtions-history/TransactionFilter";
-import { TransactionsView, TransactionView } from "@/src/ui/Components/transactions/transavtions-history/TransactionsView";
+import { TransactionsView } from "@/src/ui/Components/transactions/transavtions-history/TransactionsView";
 import { Box, Flex } from "@radix-ui/themes";
 
 export default function Page() {
-
   return (
     <section>
         <Flex direction="column" justify="between">
@@ -18,10 +17,10 @@ export default function Page() {
                 />
             </Box>
             <Box>
-              <TransactionFilter />
+              <TransactionFilter/>
             </Box>
             <Box>
-              <TransactionsView />
+              <TransactionsView/>
             </Box>
         </Flex>
     </section>

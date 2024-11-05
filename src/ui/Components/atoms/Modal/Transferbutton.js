@@ -6,14 +6,18 @@ const BUTTON_DEFAULT = {
   height: "h-[60px]",
   text: "이체하기",
   bgColor: "bg-[#D9D9D9]",
-  textColor: "text-black"
+  textColor: "text-black",
+  radius: "rounded-md"  
 };
 
 const TransferButton = ({ 
   onClick,
   width = BUTTON_DEFAULT.width,
   height = BUTTON_DEFAULT.height,
-  text = BUTTON_DEFAULT.text
+  text = BUTTON_DEFAULT.text,
+  radius = BUTTON_DEFAULT.radius,
+  bgColor = BUTTON_DEFAULT.bgColor,    
+  textColor = BUTTON_DEFAULT.textColor
 }) => {
   return (
     <button 
@@ -21,9 +25,9 @@ const TransferButton = ({
       className={`
         ${width}
         ${height}
-        ${BUTTON_DEFAULT.bgColor}
-        ${BUTTON_DEFAULT.textColor}
-        rounded-md
+        ${bgColor}
+        ${textColor}
+        ${radius}
         px-6
         py-3
       `}

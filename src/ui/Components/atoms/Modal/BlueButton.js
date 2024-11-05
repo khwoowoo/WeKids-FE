@@ -6,7 +6,6 @@ const BLUE_BUTTON_DEFAULT = {
   height: "h-[57px]",
   bgColor: "bg-[#123F6D]",
   hoverColor: "hover:bg-[#0e325a]",
-  textColor: "text-white"
 };
 
 const BlueButton = ({ 
@@ -30,14 +29,6 @@ const BlueButton = ({
         duration-300
       `}
     >
-      <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        className={`${width} ${height}`}
-        viewBox={`0 0 76 57`} 
-        fill="none"
-      >
-        <rect className={`${width} ${height}`} fill="currentColor"/>
-      </svg>
     </button>
   );
 };

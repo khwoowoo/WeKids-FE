@@ -7,22 +7,28 @@ const PROFILE_DEFAULT = {
   height: "h-[60px]",
   bgColor: "bg-white",
   borderColor: "border-2 border-gray-200",
-  imagePath: "/images/profile.jpg"
+  imagePath: "/images/Avatar.svg",
+  radius: "rounded-full",
 };
 
 const Profile = ({ 
     width = PROFILE_DEFAULT.width, 
     height = PROFILE_DEFAULT.height,
     bgColor = PROFILE_DEFAULT.bgColor,
-    imagePath = PROFILE_DEFAULT.imagePath  // 이미지 경로 prop 추가
+    borderColor = PROFILE_DEFAULT.borderColor,
+    imagePath = PROFILE_DEFAULT.imagePath,
+    radius = PROFILE_DEFAULT.radius,
+    onClick
   }) => {
     return (
-      <div 
+      <div
+        onClick={onClick} 
         className={`
           ${width}
           ${height}
           ${bgColor}
-          ${PROFILE_DEFAULT.borderColor}
+          ${borderColor}
+          ${radius}
           rounded-full
           overflow-hidden
           relative
@@ -37,5 +43,5 @@ const Profile = ({
       </div>
     );
   };
-  
+
   export default Profile;

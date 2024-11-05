@@ -1,8 +1,7 @@
 import Image from "next/image";
 import "./globals.css";
-import "../ui/Components/Upload";
-import Upload from "../ui/Components/Upload";
-import MainHome from "./[home]/transactions/page";
+import "../ui/Components/atoms/Upload";
+import Upload from "../ui/Components/atoms/Upload";
 
 export default function Home() {
   return (

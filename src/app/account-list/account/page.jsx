@@ -1,5 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import KeyPad from '../../../ui/Components/atoms/KeyPad';
+import NextButton from '../../../ui/Components/atoms/Modal/NextButton';
+
 const dummyData = [
     { name: '구자빈', account: '111-111-111', balance: 1000000, bank: '우리은행' },
     { name: '강현우', account: '222-222-222', balance: 2000000, bank: '우리은행' },
@@ -9,7 +12,7 @@ const dummyData = [
   ];
 
 export default function Page() {
-
+    const [amount, setAmount] = useState(0);
     const [selectedUser, setSelectedUser] = useState(dummyData[0]);
 
     const handleUserChange = (e) => {
@@ -39,7 +42,31 @@ export default function Page() {
         </div>
         <button className="text-lg">취소</button>
       </div>
-       
+      <div className="flex flex-col items-center flex-grow">
+          <div className="flex flex-col text-center justify-center h-1/2 ">
+            <div className='text-4xl font-bold'>{amount.toLocaleString()}원</div>
+          </div>
+          <div className="flex space-x-4 ">
+            <button className="px-4 py-1 bg-gray-200 rounded">
+              +1만
+            </button>
+            <button className="px-4 py-1 bg-gray-200 rounded">
+              +5만
+            </button>
+            <button className="px-4 py-1 bg-gray-200 rounded">
+              +10만
+            </button>
+            <button className="px-4 py-1 bg-gray-200 rounded">
+              전액
+            </button>
+          </div>
+          <div className="bottom-0 fixed">
+            <div className="w-[393px] mt-9">
+                <KeyPad buttonHeight='h-14' buttonWidth='w-[393px]'/>
+            </div>
+                <NextButton width='w-[393px]' radius = ''/>
+            </div>
+        </div>
     </div>
   );
 }

@@ -1,11 +1,13 @@
 import { Text } from "@radix-ui/themes";
-import Copy from "../atoms/CopyIcon";
+import Copy from "../../../../public/icons/CopyIcon";
 
 const BlueBox = () => {
   const accountInfo = {
     accountNumber: "3333-0073-0030-03",
     balance: 300000,
     name: "강현우",
+    state: "active",
+    designType: "WEBEE",
   };
 
   return (
@@ -24,12 +26,8 @@ const BlueBox = () => {
       </div>
 
       {/* 마스코트 이미지 */}
-      <div className="absolute right-4 bottom-16">
-        <img
-          src="/images/account_weebee.svg"
-          alt="Mascot"
-          className="w-16 h-16"
-        />
+      <div className="absolute right-0 top-0">
+        <img src="/images/account_weebee.svg" alt="Mascot" />
       </div>
 
       {/* 잔액 영역 - 마스코트 이미지 아래에 배치 */}

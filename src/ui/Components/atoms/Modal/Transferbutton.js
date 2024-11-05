@@ -2,11 +2,11 @@
 import React from 'react';
 
 const BUTTON_DEFAULT = {
-  width: "128px",
-  height: "60px",
+  width: "w-[128px]",
+  height: "h-[60px]",
   text: "이체하기",
-  bgColor: "#D9D9D9",
-  textColor: "#000000"
+  bgColor: "bg-[#D9D9D9]",
+  textColor: "text-black"
 };
 
 const TransferButton = ({ 
@@ -18,14 +18,15 @@ const TransferButton = ({
   return (
     <button 
       onClick={onClick}
-      style={{ 
-        width, 
-        height,
-        backgroundColor: BUTTON_DEFAULT.bgColor,
-        color: BUTTON_DEFAULT.textColor,
-        borderRadius: '6px',
-        padding: '12px 24px'
-      }}
+      className={`
+        ${width}
+        ${height}
+        ${BUTTON_DEFAULT.bgColor}
+        ${BUTTON_DEFAULT.textColor}
+        rounded-md
+        px-6
+        py-3
+      `}
     >
       {text}
     </button>

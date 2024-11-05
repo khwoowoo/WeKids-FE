@@ -2,9 +2,11 @@
 import React from 'react';
 
 const BLUE_BUTTON_DEFAULT = {
-  width: "76px",
-  height: "57px",
-  bgColor: "#123F6D"
+  width: "w-[76px]",
+  height: "h-[57px]",
+  bgColor: "bg-[#123F6D]",
+  hoverColor: "hover:bg-[#0e325a]",
+  textColor: "text-white"
 };
 
 const BlueButton = ({ 
@@ -16,23 +18,25 @@ const BlueButton = ({
   return (
     <button 
       onClick={onClick}
-      style={{ 
-        width,
-        height,
-        backgroundColor: bgColor,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
+      className={`
+        ${width}
+        ${height}
+        ${bgColor}
+        ${BLUE_BUTTON_DEFAULT.hoverColor}
+        flex
+        items-center
+        justify-center
+        transition-colors
+        duration-300
+      `}
     >
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
-        width={width} 
-        height={height} 
-        viewBox={`0 0 ${parseInt(width)} ${parseInt(height)}`} 
+        className={`${width} ${height}`}
+        viewBox={`0 0 76 57`} 
         fill="none"
       >
-        <rect width={width} height={height} fill={bgColor}/>
+        <rect className={`${width} ${height}`} fill="currentColor"/>
       </svg>
     </button>
   );

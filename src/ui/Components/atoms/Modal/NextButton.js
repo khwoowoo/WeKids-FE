@@ -2,12 +2,12 @@
 import React from 'react';
 
 const BUTTON_DEFAULT = {
-  width: "400px",
-  height: "61px",
+  width: "w-[400px]",  
+  height: "h-[61px]", 
   text: "다음",
-  bgColor: "#2483C5",
-  hoverColor: "#1f6ea3",
-  textColor: "#FFFFFF"
+  bgColor: "bg-[#2483C5]", 
+  hoverColor: "hover:bg-[#1f6ea3]", 
+  textColor: "text-white"  
 };
 
 const NextButton = ({ 
@@ -19,17 +19,18 @@ const NextButton = ({
   return (
     <button 
       onClick={onClick}
-      style={{ 
-        width, 
-        height, 
-        backgroundColor: BUTTON_DEFAULT.bgColor,
-        color: BUTTON_DEFAULT.textColor,
-        borderRadius: '6px',
-        padding: '12px 24px',
-        transition: 'background-color 300ms'
-      }}
-      onMouseOver={(e) => e.target.style.backgroundColor = BUTTON_DEFAULT.hoverColor}
-      onMouseOut={(e) => e.target.style.backgroundColor = BUTTON_DEFAULT.bgColor}
+      className={`
+        ${width} 
+        ${height} 
+        ${BUTTON_DEFAULT.bgColor} 
+        ${BUTTON_DEFAULT.hoverColor} 
+        ${BUTTON_DEFAULT.textColor} 
+        rounded-md 
+        px-6 
+        py-3 
+        transition-colors 
+        duration-300
+      `}
     >
       {text}
     </button>

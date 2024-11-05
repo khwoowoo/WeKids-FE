@@ -1,9 +1,11 @@
-import React from 'react'
+import Header from "@/src/ui/Components/Header";
+import BlueBox from "../_components/BlueBox";
 
-const page = () => {
+export default function MainHome() {
   return (
-    <div>page</div>
-  )
+    <div>
+      <Header />
+      <BlueBox />
+    </div>
+  );
 }
-
-export default page

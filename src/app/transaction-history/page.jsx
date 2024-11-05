@@ -1,6 +1,8 @@
 "use client";
 
 import TopBar from "@/src/ui/Components/transactions/transavtions-history/TopBar";
+import { TransactionFilter } from "@/src/ui/Components/transactions/transavtions-history/TransactionFilter";
+import { TransactionsView, TransactionView } from "@/src/ui/Components/transactions/transavtions-history/TransactionsView";
 import { Box, Flex } from "@radix-ui/themes";
 
 export default function Page() {
@@ -16,6 +18,10 @@ export default function Page() {
                 />
             </Box>
             <Box>
+              <TransactionFilter />
+            </Box>
+            <Box>
+              <TransactionsView />
             </Box>
         </Flex>
     </section>

@@ -1,22 +1,22 @@
-import React from 'react';
-import Upload from '../Upload';
+import React from "react";
+import Upload from "../../../../../public/icons/Upload";
 
 const SHARE_BUTTON_DEFAULT = {
   width: "w-[76px]",
   height: "h-[57px]",
   bgColor: "bg-[#123F6D]",
-  iconColor: "text-white"
+  iconColor: "text-white",
 };
 
-const ShareButton = ({ 
+const ShareButton = ({
   onClick,
   width = SHARE_BUTTON_DEFAULT.width,
   height = SHARE_BUTTON_DEFAULT.height,
   bgColor = SHARE_BUTTON_DEFAULT.bgColor,
-  iconColor = SHARE_BUTTON_DEFAULT.iconColor
+  iconColor = SHARE_BUTTON_DEFAULT.iconColor,
 }) => {
   return (
-    <button 
+    <button
       onClick={onClick}
       className={`
         ${width}
@@ -28,7 +28,7 @@ const ShareButton = ({
         justify-center
       `}
     >
-       <div>
+      <div>
         <Upload />
       </div>
     </button>

@@ -14,7 +14,7 @@ export default function Modal({ isOpen, onClose, children, width = '30%', height
         <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center z-50" onClick={onClose} >
             <div onClick={(e) => e.stopPropagation()}
                 className={`bg-white rounded-t-3xl p-6 transform transition-transform duration-500 ease-in-out ${
-                    isOpen ? "translate-y-0" : "translate-y-full"
+                    isOpen ? "visible opacity-100" : "invisible opacity-0"
                 } absolute bottom-0`}
                 style={{ width, height, transform: `translateY(${translateY})` }}
             >

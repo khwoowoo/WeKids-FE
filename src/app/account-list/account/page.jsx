@@ -15,6 +15,37 @@ export default function Page() {
     const [amount, setAmount] = useState(0);
     const [selectedUser, setSelectedUser] = useState(dummyData[0]);
 
+    const handleNumberClick = (num) => {
+        if(num == '⌫'){
+                const newAmount = amount.toString().slice(0, -1);
+                setAmount(newAmount === '' ? 0 : parseInt(newAmount, 10));
+                return newAmount;
+        }
+        else{
+          if(parseInt(amount.toString() + num, 10) > selectedUser.balance){
+            setAmount(selectedUser.balance);
+            return amount;
+          }
+          else{
+            setAmount((prevAmount) => {
+              const newAmount = parseInt(prevAmount.toString() + num, 10);
+              return newAmount;
+            });
+          }
+        }
+      };
+      const handleSetMaxAmount = () => {
+        setAmount(selectedUser.balance);
+      };
+      const handleAddAmount = (increment) => {
+        if(amount + increment > selectedUser.balance){
+          setAmount(selectedUser.balance);
+        }
+        else{
+          setAmount((prevAmount) => prevAmount + increment);
+        }
+      };
+
     const handleUserChange = (e) => {
         const selectedName = e.target.value;
         const user = dummyData.find((user) => user.name === selectedName);
@@ -47,22 +78,22 @@ export default function Page() {
             <div className='text-4xl font-bold'>{amount.toLocaleString()}원</div>
           </div>
           <div className="flex space-x-4 ">
-            <button className="px-4 py-1 bg-gray-200 rounded">
+          <button className="px-4 py-1 bg-gray-200 rounded" onClick={() => handleAddAmount(10000)}>
               +1만
             </button>
-            <button className="px-4 py-1 bg-gray-200 rounded">
+            <button className="px-4 py-1 bg-gray-200 rounded" onClick={() => handleAddAmount(50000)}>
               +5만
             </button>
-            <button className="px-4 py-1 bg-gray-200 rounded">
+            <button className="px-4 py-1 bg-gray-200 rounded" onClick={() => handleAddAmount(100000)}>
               +10만
             </button>
-            <button className="px-4 py-1 bg-gray-200 rounded">
+            <button className="px-4 py-1 bg-gray-200 rounded" onClick={handleSetMaxAmount}>
               전액
             </button>
           </div>
           <div className="bottom-0 fixed">
             <div className="w-[393px] mt-9">
-                <KeyPad buttonHeight='h-14' buttonWidth='w-[393px]'/>
+                <KeyPad number={handleNumberClick} buttonHeight='h-14' buttonWidth='w-[393px]'/>
             </div>
                 <NextButton width='w-[393px]' radius = ''/>
             </div>

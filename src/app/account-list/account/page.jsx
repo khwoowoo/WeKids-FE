@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import KeyPad from '../../../ui/Components/atoms/KeyPad';
 import NextButton from '../../../ui/Components/atoms/Modal/NextButton';
 import Modal from '../../../ui/Components/atoms/Modal';
@@ -24,6 +25,7 @@ export default function Page() {
     const [selectedUser, setSelectedUser] = useState(dummyData[0]); // TODO : 추후에 현재 유저 데이터 생길시 더미데이터 빼고 외부값 넣기
     const [receiveUser, setReceiveUser] = useState(receive_dummyData[0]); // TODO : 추후에 받는 사람 데이터 생길시 더미데이터 빼고 외부값 넣기
     const [isShaking, setIsShaking] = useState(false);
+    const router = useRouter();
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
@@ -62,6 +64,10 @@ export default function Page() {
     const handleSetMaxAmount = () => {
         setAmount(selectedUser.balance);
     };
+
+    const routeControll = () => {
+        router.push('/account-list/account/done');
+    }
 
     const handleAddAmount = (increment) => {
         if(amount + increment > selectedUser.balance){
@@ -107,7 +113,8 @@ export default function Page() {
                 <div className={`${isShaking ? 'shake-animation': ''} text-4xl font-bold ${isShaking ? 'text-red-600' : 'text-slate-900'}`}>{amount.toLocaleString()}원</div>
                 <div className="text-red-600">{isShaking ? `${selectedUser.balance.toLocaleString()}원 까지만 이체 가능합니다.` : ''}</div>
             </div>
-            <div className="flex space-x-4 ">
+            <div className="bottom-0 fixed">
+            <div className="flex space-x-4 justify-center">
                 <button className="px-4 py-1 bg-gray-200 rounded" onClick={() => handleAddAmount(10000)}>
                 +1만
                 </button>
@@ -121,7 +128,7 @@ export default function Page() {
                 전액
                 </button>
             </div>
-            <div className="bottom-0 fixed">
+            
                 <div className="w-[393px] mt-9">
                     <KeyPad number={handleNumberClick} buttonHeight='h-14' buttonWidth='w-[393px]'/>
                 </div>
@@ -143,7 +150,7 @@ export default function Page() {
                 </div>
                 <div className="flex space-x-3 mt-9">
                     <TransferButton text={"취소"} onClick={closeModal}/>
-                    <NextButton text={"이체하기"} />
+                    <NextButton text={"이체하기"} onClick={routeControll} />
                 </div>
             </Modal>
         </div>

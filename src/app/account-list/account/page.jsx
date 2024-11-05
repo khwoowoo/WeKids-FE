@@ -15,13 +15,13 @@ const dummyData = [
 ];
 
 const receive_dummyData = [
-    { name: '김우리', account: '111-111-111'},
+    { name: '김우리', account: '666-666-666'},
 ];
 
 export default function Page() {
     const [amount, setAmount] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedUser, setSelectedUser] = useState(dummyData[0]);
+    const [selectedUser, setSelectedUser] = useState(dummyData[0]); // TODO : 추후에 현재 유저 데이터 생길시 더미데이터 빼고 외부값 넣기
     const [receiveUser, setReceiveUser] = useState(receive_dummyData[0]); // TODO : 추후에 받는 사람 데이터 생길시 더미데이터 빼고 외부값 넣기
     const [isShaking, setIsShaking] = useState(false);
 
@@ -133,9 +133,9 @@ export default function Page() {
                 width="393px"
                 height="45vh"
                 translateY="0%"
-                delete_button={false}
+                delete_button={true}
             >
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center mt-4">
                     <Profile />
                     <p className="text-base mt-2"><span className="font-bold text-lg">{receiveUser.name}</span>님에게  <span className="font-bold text-lg">{amount.toLocaleString()}원</span> </p>
                     <p className="text-base mt-1">이체하시겠습니까?</p>

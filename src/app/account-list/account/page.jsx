@@ -69,6 +69,7 @@ export default function Page() {
         setAmount(selectedUser.balance);
     };
 
+
     const routeControll = (text) => {
         if(text == 'cancel'){
             router.push('/account-list');
@@ -162,6 +163,7 @@ export default function Page() {
                 <div className="flex space-x-3 mt-7">   
                     <TransferButton text={"취소"} onClick={closeModal}/>
                     <NextButton text={"이체하기"} onClick={() => routeControll("done")} />
+
                 </div>
             </Modal>
         </div>

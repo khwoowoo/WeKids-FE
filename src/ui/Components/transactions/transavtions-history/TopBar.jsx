@@ -1,8 +1,7 @@
 "use client";
 import { Flex } from "@radix-ui/themes";
 
-
-function TopBar({ name, balance, accountNumber }) {
+export default function TopBar({ name, balance, accountNumber }) {
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text)
@@ -32,8 +31,8 @@ function TopBar({ name, balance, accountNumber }) {
           viewBox="0 0 31 31" 
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
-          onClick={handleBackClick} // 뒤로 가기 클릭 핸들러 추가
-          className="cursor-pointer" // 클릭 가능한 느낌을 주기 위해 커서 스타일 추가
+          onClick={handleBackClick} 
+          className="cursor-pointer"
         >
           <path d="M5.16666 15.5L25.8333 15.5M5.16666 15.5L12.9167 7.75M5.16666 15.5L12.9167 23.25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -61,12 +60,10 @@ function TopBar({ name, balance, accountNumber }) {
         </p>
         <h2 className="text-3xl font-bold">{Number(balance).toLocaleString()}원</h2>
       </Flex>
-      <Flex justify="between" direction="row" className="gap-3 mt-4 m-8">
-        <button onClick={()=>{}} className="bg-black/10 text-white py-3 px-9 rounded-lg">이체하기</button>
-        <button onClick={()=>{}} className="bg-black/10 text-white py-3 px-9 rounded-lg">가져오기</button>
+      <Flex justify="between" direction="row" className="gap-3 m-8 mt-4">
+        <button onClick={()=>{}} className="py-3 text-white rounded-lg bg-black/10 px-9">이체하기</button>
+        <button onClick={()=>{}} className="py-3 text-white rounded-lg bg-black/10 px-9">가져오기</button>
       </Flex>
     </Flex>
   );
 }
-
-export default TopBar;

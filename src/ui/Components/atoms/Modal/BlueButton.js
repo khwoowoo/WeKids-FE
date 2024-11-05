@@ -1,11 +1,34 @@
+'use client';
 import React from 'react';
 
-const BlueButton = () => {
+const BLUE_BUTTON_DEFAULT = {
+  width: "w-[76px]",
+  height: "h-[57px]",
+  bgColor: "bg-[#123F6D]",
+  hoverColor: "hover:bg-[#0e325a]",
+};
+
+const BlueButton = ({ 
+  onClick,
+  width = BLUE_BUTTON_DEFAULT.width, 
+  height = BLUE_BUTTON_DEFAULT.height,
+  bgColor = BLUE_BUTTON_DEFAULT.bgColor 
+}) => {
   return (
-    <button className="w-[76px] h-[57px] bg-[#123F6D] flex items-center justify-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="76" height="57" viewBox="0 0 76 57" fill="none">
-        <rect width="76" height="57" fill="#123F6D"/>
-      </svg>
+    <button 
+      onClick={onClick}
+      className={`
+        ${width}
+        ${height}
+        ${bgColor}
+        ${BLUE_BUTTON_DEFAULT.hoverColor}
+        flex
+        items-center
+        justify-center
+        transition-colors
+        duration-300
+      `}
+    >
     </button>
   );
 };

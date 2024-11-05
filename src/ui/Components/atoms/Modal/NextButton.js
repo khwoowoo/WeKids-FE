@@ -1,9 +1,44 @@
+'use client';
 import React from 'react';
 
-const NextButton = () => {
+const BUTTON_DEFAULT = {
+  width: "w-[400px]",
+  height: "h-[61px]",
+  text: "다음",
+  bgColor: "bg-[#2483C5]",
+  hoverColor: "hover:bg-[#1f6ea3]",
+  textColor: "text-white",
+  radius: "rounded-md",
+  padding: "px-6 py-3"
+};
+
+const NextButton = ({ 
+  onClick, 
+  width = BUTTON_DEFAULT.width, 
+  height = BUTTON_DEFAULT.height, 
+  text = BUTTON_DEFAULT.text,
+  bgColor = BUTTON_DEFAULT.bgColor,      
+  hoverColor = BUTTON_DEFAULT.hoverColor,
+  textColor = BUTTON_DEFAULT.textColor,    
+  radius = BUTTON_DEFAULT.radius,          
+  padding = BUTTON_DEFAULT.padding        
+}) => {
   return (
-    <button className="w-[400px] h-[61px] bg-[#2483C5] text-white py-3 px-6 rounded-md hover:bg-[#1f6ea3] transition duration-300">
-      다음
+    <button 
+      onClick={onClick}
+      className={`
+        ${width}
+        ${height}
+        ${bgColor}
+        ${hoverColor}
+        ${textColor}
+        ${radius}
+        ${padding}
+        transition-colors
+        duration-300
+      `}
+    >
+      {text}
     </button>
   );
 };

@@ -1,8 +1,6 @@
+import Header from "../ui/layout/Header";
+import MainHome from "./_home/page";
 import "./globals.css";
-import "../ui/Components/atoms/Upload";
-import Upload from "../ui/Components/atoms/Upload";
-import MainHome from "./[home]/page";
-import Header from "../ui/Components/Header";
 
 export default function Home() {
   return (

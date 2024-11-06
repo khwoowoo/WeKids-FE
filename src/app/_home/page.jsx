@@ -1,7 +1,8 @@
 "use client";
+import useAccountInfoStore from "@/src/stores/useAccountInfoStore";
 import Profile from "@/src/ui/Components/atoms/Modal/Profile";
 import BlueCardBox from "@/src/ui/Components/home/BlueCardBox";
-import { useState } from "react";
+import { useEffect } from "react";
 
 const childAccounts = [
   {
@@ -18,7 +19,7 @@ const childAccounts = [
     balance: 450000,
     name: "이준호",
     state: "inactive",
-    designType: "WEBEE",
+    designType: "BOMBOM",
   },
   {
     id: 3,
@@ -26,13 +27,17 @@ const childAccounts = [
     balance: 120000,
     name: "김민수",
     state: "active",
-    designType: "WEBEE",
+    designType: "KU",
   },
 ];
 
 export default function MainHome() {
   // 첫 번째 계좌를 초기값으로 설정
-  const [selectedAccount, setSelectedAccount] = useState(childAccounts[0]);
+  const { selectedAccount, setSelectedAccount } = useAccountInfoStore();
+
+  useEffect(() => {
+    setSelectedAccount(childAccounts[0]);
+  }, [setSelectedAccount]);
 
   const handleProfileClick = (accountInfo) => {
     console.log("Clicked account:", accountInfo); // 클릭 시 콘솔에 출력
@@ -50,7 +55,7 @@ export default function MainHome() {
           />
         ))}
       </div>
-      <BlueCardBox account={selectedAccount} />
+      <BlueCardBox />
       {/* 선택된 계좌 정보 전달 */}
     </div>
   );

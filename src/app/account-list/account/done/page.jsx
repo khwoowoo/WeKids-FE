@@ -1,15 +1,15 @@
-'use client';
-import React, { useState } from 'react';
-import ShareButton from '../../../../ui/Components/atoms/Modal/Sharebutton';
-import NextButton from '../../../../ui/Components/atoms/Modal/NextButton';
+"use client";
+import React, { useState } from "react";
+import ShareButton from "@/src/ui/Components/atoms/Modal/Sharebutton";
+import NextButton from "@/src/ui/Components/atoms/Modal/NextButton";
 
 const Page = () => {
   const [transferData, setTransferData] = useState({
-    receiverName: '최윤정',
+    receiverName: "최윤정",
     amount: 10000,
-    accountNumber: '240910713624017',
-    bankName: '하나',
-    memo: '메모입력..'
+    accountNumber: "240910713624017",
+    bankName: "하나",
+    memo: "메모입력..",
   });
 
   return (
@@ -40,18 +40,14 @@ const Page = () => {
           </p>
           <div className="flex items-center justify-center gap-1 text-[14px] text-[#666666]">
             {transferData.bankName} {transferData.accountNumber}
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 16 16" 
-              fill="none" 
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path 
-                d="M6 12L10 8L6 4" 
-                stroke="#666666" 
-                strokeWidth="1.5"
-              />
+              <path d="M6 12L10 8L6 4" stroke="#666666" strokeWidth="1.5" />
             </svg>
           </div>
         </div>
@@ -61,17 +57,17 @@ const Page = () => {
           {transferData.memo}
         </div>
       </div>
-      
+
       {/* 하단 버튼 영역 */}
       <div className="px-5 pb-8">
         <div className="flex gap-1">
           <ShareButton width="w-[84px]" height="h-[62px]" />
-          <NextButton 
-            text="확인" 
-            width="w-[285px]" 
-            height="h-[62px]" 
-            padding="px-[82px] py-[22px]" 
-            radius="rounded-[11px]" 
+          <NextButton
+            text="확인"
+            width="w-[285px]"
+            height="h-[62px]"
+            padding="px-[82px] py-[22px]"
+            radius="rounded-[11px]"
             bgColor="bg-[#2483C5]"
           />
         </div>

@@ -6,7 +6,7 @@ export const TransactionItem = ({ date, title, amount, balance, isIncome }) => {
         <Flex 
         direction="row" 
         justify="between" 
-        className="p-5 text-black"
+        className="p-3 pt-5 pb-5 text-black"
         >
         <Flex direction="row">
             <p className="pr-5 text-sm text-gray-500">{date}</p>

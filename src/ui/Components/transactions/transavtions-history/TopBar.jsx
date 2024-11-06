@@ -1,7 +1,10 @@
-"use client";
+// "use client";
 import { Flex } from "@radix-ui/themes";
+import { useRouter } from 'next/navigation';
 
 export default function TopBar({ name, balance, accountNumber }) {
+  const router = useRouter();
+
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text)
@@ -10,7 +13,8 @@ export default function TopBar({ name, balance, accountNumber }) {
   };
 
   const handleBackClick = () => {
-    window.history.back();
+    // window.history.back();
+    router.back();
   };
 
   const handleSettingsClick = () => {

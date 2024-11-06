@@ -1,4 +1,4 @@
-const { create } = require("zustand");
+import { create } from 'zustand';
 
 export const RangeEnum = {
     ONE_MONTH: "1개월",

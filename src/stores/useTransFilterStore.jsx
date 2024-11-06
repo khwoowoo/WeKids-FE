@@ -7,7 +7,7 @@ export const RangeEnum = {
     CUSTOM: "직접설정",
 };
 
-export const TpyeEnum = {
+export const TypeEnum = {
     ALL: "전체",
     DEPOSIT: "입금만",
     WITHDRAWAL: "출력만",
@@ -30,7 +30,7 @@ const useTransFilterStore = create((set) => ({
     setStartDate: (date) => set({ startDate: date }),
     setEndDate: (date) => set({ endDate: date }),
 
-    type: TpyeEnum.ALL,
+    type: TypeEnum.ALL,
     setType: (newType) => set({ type: newType }),
 
     sortingType: SortEnum.NEWEST,
@@ -39,7 +39,7 @@ const useTransFilterStore = create((set) => ({
     search: '',
     setSearch: (searcKeyword) => set({ search: searcKeyword }),
 
-    resetFilter: () => set({ range: RangeEnum.ONE_MONTH, Type: TpyeEnum.ALL, sortingType: SortEnum.NEWEST,startDate: today, endDate: today }),
+    resetFilter: () => set({ range: RangeEnum.ONE_MONTH, Type: TypeEnum.ALL, sortingType: SortEnum.NEWEST,startDate: today, endDate: today }),
 }));
   
 export default useTransFilterStore;

@@ -1,4 +1,4 @@
-import useTransFilterStore, { RangeEnum, SortEnum, TpyeEnum } from "@/src/stores/useTransFilterStore";
+import useTransFilterStore, { RangeEnum, SortEnum, TypeEnum } from "@/src/stores/useTransFilterStore";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { Flex, Box, Button, Text } from "@radix-ui/themes";
 
@@ -65,12 +65,12 @@ export const TransFilterModal = ({ onClose }) => {
                             onValueChange={(value) => setType(value)}
                             className="flex p-3"
                         >
-                            {Object.values(TpyeEnum).map((label, index) => (
+                            {Object.values(TypeEnum).map((label, index) => (
                             <RadioGroup.Item
                                 key={label}
                                 value={label}
                                 className={`text-black text-sm w-[120px] h-10 border ${
-                                index < Object.values(TpyeEnum).length - 1 ? "border-r-0" : ""
+                                index < Object.values(TypeEnum).length - 1 ? "border-r-0" : ""
                                 } border-gray-500 text-gray-700 bg-gray-200 data-[state=checked]:bg-white data-[state=checked]:border-black transition-colors`}
                             >
                                 {label}

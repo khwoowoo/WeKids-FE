@@ -6,35 +6,31 @@ import NextButton from '../../../ui/Components/atoms/Modal/NextButton';
 import Modal from '../../../ui/Components/atoms/Modal';
 import Profile from '../../../ui/Components/atoms/Modal/Profile';
 import TransferButton from '../../../ui/Components/atoms/Modal/Transferbutton';
-import { useSearchParams } from 'next/navigation';
+import useTransactionStore from '../../../stores/useTransactionStore';
 
 const dummyData = [
-    { id: 1, name: '구자빈', account: '111-111-111', balance: 1000000, bank: '우리은행' },
-    { id: 2, name: '강현우', account: '222-222-222', balance: 2000000, bank: '우리은행' },
-    { id: 3, name: '안찬웅', account: '333-333-333', balance: 3000000, bank: '우리은행' },
-    { id: 4, name: '조예은', account: '444-444-444', balance: 4000000, bank: '우리은행' },
-    { id: 5, name: '최윤정', account: '555-555-555', balance: 5000000, bank: '우리은행' },
+    { id: 1, name: '구자빈', account: '111-111-111', bank: '우리은행' },
+    { id: 2, name: '강현우', account: '222-222-222', bank: '우리은행' },
+    { id: 3, name: '안찬웅', account: '333-333-333', bank: '우리은행' },
+    { id: 4, name: '조예은', account: '444-444-444', bank: '우리은행' },
+    { id: 5, name: '최윤정', account: '555-555-555', bank: '우리은행' }, // 추후에는 더미데이터를 없애고 id 계좌 정보를 백엔드에서 조회해 오고 출력
 ];
 
-const sendUser = { name: '김우리', account: '666-666-666', balance: 50000000, bank: '우리은행' }
+const sendUser = { name: '김우리', account: '666-666-666', balance: 50000000, bank: '우리은행' } // bank 컬럼은 우선 혹시 몰라서 보류
 
 export default function Page() {
-    
-    const [amount, setAmount] = useState(0);
+
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedUser, setSelectedUser] = useState(dummyData[0]); // TODO : 추후에 현재 유저 데이터 생길시 더미데이터 빼고 외부값 넣기
     const [isShaking, setIsShaking] = useState(false);
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const queryId = parseInt(searchParams.get('id'), 10);
+    const { selectedAccount, transferAmount, setSelectedAccount, setTransferAmount, clearTransferData } = useTransactionStore();
 
-  useEffect(() => {
-    
-    const user = dummyData.find((user) => user.id === queryId);
-    if (user) {
-      setSelectedUser(user);
-    }
-  }, [queryId]);
+    useEffect(() => {
+        console.log(selectedAccount);
+        if (!selectedAccount) {
+            router.push('/account-list');
+        }
+    }, [selectedAccount]);
     
 
     const openModal = () => setIsModalOpen(true);
@@ -49,92 +45,83 @@ export default function Page() {
         }
     }, [isShaking]);
 
-    useEffect(() => {
-        router.push(`/account-list/account?id=${selectedUser.id}`);
-    }, [selectedUser]);
 
     const handleNumberClick = (num) => {
-        if(num == '⌫'){
-            const newAmount = amount.toString().slice(0, -1);
-            setAmount(newAmount === '' ? 0 : parseInt(newAmount, 10));
-            return newAmount;
-        }
-        else{
-            if(parseInt(amount.toString() + num, 10) > sendUser.balance){
-                setAmount(sendUser.balance);
+        if (num === '⌫') {
+            const newAmount = transferAmount.toString().slice(0, -1);
+            setTransferAmount(newAmount === '' ? 0 : parseInt(newAmount, 10));
+        } else {
+            const newTotal = parseInt(transferAmount.toString() + num, 10);
+            if (newTotal > sendUser.balance) {
+                setTransferAmount(sendUser.balance);
                 setIsShaking(true);
-                setTimeout(() => setIsShaking(false), 500);
-                return amount;
-            }
-            else{
-                setAmount((prevAmount) => {
-                    const newAmount = parseInt(prevAmount.toString() + num, 10);
-                    return newAmount;
-                });
+            } else {
+                setTransferAmount(newTotal);
             }
         }
     };
 
     const handleSetMaxAmount = () => {
-        setAmount(sendUser.balance);
+        setTransferAmount(sendUser.balance);
     };
 
 
     const routeControll = (text) => {
         if(text == 'cancel'){
             router.push('/account-list');
+            clearTransferData();
         }
         else{
-            //TODO: 이체처리를 하고 성공했을 경우 이동
             router.push('/account-list/account/done');
         }
         
     }
 
     const handleAddAmount = (increment) => {
-        if(amount + increment > sendUser.balance){
-            setAmount(sendUser.balance);
+        const newTotal = transferAmount + increment;
+        if (newTotal > sendUser.balance) {
+            setTransferAmount(sendUser.balance);
             setIsShaking(true);
-            setTimeout(() => setIsShaking(false), 500);
-        }
-        else{
-            setAmount((prevAmount) => prevAmount + increment);
+        } else {
+            setTransferAmount(newTotal);
         }
     };
 
     const handleUserChange = (e) => {
         const selectedName = e.target.value;
-        const user = dummyData.find((user) => user.name === selectedName);
+        const user = dummyData.find((user) => user.name === selectedName); // dummyData
         if (user) {
-          setSelectedUser(user);
+            setSelectedAccount(user);
         }
-      };
+    };
+
+    if (!selectedAccount) return null;
   
     return (
     <div className="flex flex-col h-screen overflow-hidden bg-gray-100">
         <div className="flex justify-between items-center w-full p-4 top-0 absolute">
-            <button className="text-lg" onClick={() => routeControll("cancel")}>←</button>
+            <button className="text-lg" onClick={() => router.back()}>←</button>
             <div className="text-center">
                 <div>
                     <select
                     className="bg-gray-100 cursor-pointer"
-                    value={selectedUser.name}
+                    value={selectedAccount.name}
                     onChange={handleUserChange}
                     >
-                    {dummyData.map((user, index) => (
+                    {dummyData.map((user, index) => ( // dummyData
                         <option key={index} value={user.name}>
                         {user.name}
                         </option>
                     ))}
                     </select>
                 </div>
-                <div className="text-xs text-gray-500"> {selectedUser.bank + " " +  selectedUser.account}</div>
+                <div className="text-xs text-gray-500"> {"우리은행"} {selectedAccount.account}</div>
             </div>
             <button className="text-lg" onClick={() => routeControll("cancel")}>취소</button>
         </div>
         <div className="flex flex-col items-center flex-grow">
             <div className="flex flex-col text-center justify-center h-1/2 ">
-                <div className={`${isShaking ? 'shake-animation': ''} text-4xl font-bold ${isShaking ? 'text-red-600' : 'text-slate-900'}`}>{amount.toLocaleString()}원</div>
+                <div className={`${isShaking ? 'shake-animation': ''} text-4xl font-bold ${isShaking ? 'text-red-600' : 'text-slate-900'}`}>{transferAmount.toLocaleString()}원</div>
                 <div className="text-red-600">{isShaking ? `${sendUser.balance.toLocaleString()}원 까지만 이체 가능합니다.` : ''}</div>
             </div>
             <div className="bottom-0 fixed">
@@ -168,9 +155,9 @@ export default function Page() {
             >
                 <div className="flex flex-col items-center mt-4">
                     <Profile />
-                    <p className="text-base mt-2"><span className="font-bold text-lg">{selectedUser.name}</span>님에게  <span className="font-bold text-lg">{amount.toLocaleString()}원</span> </p>
+                    <p className="text-base mt-2"><span className="font-bold text-lg">{selectedAccount.name}</span>님에게  <span className="font-bold text-lg">{transferAmount.toLocaleString()}원</span> </p>
                     <p className="text-base mt-1">이체하시겠습니까?</p>
-                    <p className="text-xs mt-5 text-gray-400">받는계좌 :  {selectedUser.bank + " " + selectedUser.account}</p>
+                    <p className="text-xs mt-5 text-gray-400">받는계좌 : 우리은행 {selectedAccount.account}</p>
                 </div>
                 <div className="flex space-x-3 mt-7">   
                     <TransferButton text={"취소"} onClick={closeModal}/>

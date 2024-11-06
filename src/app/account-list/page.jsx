@@ -2,7 +2,8 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import TransactionList from "@/src/ui/Components/atoms/TransactionList";
-import useTransactionStore from "../../stores/useTransactionStore"
+import useTransactionStore from "@/src/stores/useTransactionStore";
+
 const dummyData = [
     { id: 1, name: '구자빈', account: '111-111-111' },
     { id: 2, name: '강현우', account: '222-222-222' },

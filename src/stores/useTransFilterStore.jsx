@@ -36,6 +36,9 @@ const useTransFilterStore = create((set) => ({
     sortingType: SortEnum.NEWEST,
     setSortingType: (sortType) => set({ sortingType: sortType }),
 
+    search: '',
+    setSearch: (searcKeyword) => set({ search: searcKeyword }),
+
     resetFilter: () => set({ range: RangeEnum.ONE_MONTH, Type: TpyeEnum.ALL, sortingType: SortEnum.NEWEST,startDate: today, endDate: today }),
 }));
   

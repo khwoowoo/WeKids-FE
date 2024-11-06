@@ -7,6 +7,7 @@ export const TransactionFilter = () => {
   const { range, setRange} = useTransFilterStore();
   const { type, setType } = useTransFilterStore();
   const { sortingType, setSortingType } = useTransFilterStore();
+  const { search, setSearch } = useTransFilterStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -25,6 +26,8 @@ export const TransactionFilter = () => {
           </Box>
           <input
             type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             className="w-full placeholder-gray-400 bg-transparent border-none outline-none text-slate-500"
           />
         </Flex>

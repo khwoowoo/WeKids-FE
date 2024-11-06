@@ -1,3 +1,4 @@
+"use client";
 import { Flex } from "@radix-ui/themes";
 import { useRouter } from 'next/navigation';
 

@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { Flex } from "@radix-ui/themes";

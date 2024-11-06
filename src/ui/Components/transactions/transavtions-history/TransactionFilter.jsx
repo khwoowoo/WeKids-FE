@@ -1,3 +1,4 @@
+"use client";
 import { Box, Flex } from "@radix-ui/themes";
 import { useState } from "react";
 import { TransFilterModal } from "./TransFilterModal";

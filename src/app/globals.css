@@ -93,6 +93,7 @@ nav{
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+}
 
 /* IE, Edge, and Firefox */
 .scrollbar-hide {

@@ -1,10 +1,8 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
+'use client'
+import React from 'react';
 import { useRouter } from 'next/navigation';
 import TransactionList from "@/src/ui/Components/atoms/TransactionList";
 import useTransactionStore from "../../stores/useTransactionStore"
-
 const dummyData = [
     { id: 1, name: '구자빈', account: '111-111-111' },
     { id: 2, name: '강현우', account: '222-222-222' },
@@ -17,38 +15,24 @@ const dummyData = [
     { id: 9, name: '다우리', account: '999-999-999' },
     { id: 10, name: '라우리', account: '000-000-000' },
 ];
-
 export default function Page() {
-  const [selectedId, setSelectedId] = useState(null);
   const router = useRouter();
   const setSelectedAccount = useTransactionStore((state) => state.setSelectedAccount);
-  
-  useEffect(() => {
-    if (selectedId !== null) {
-        const user = dummyData.find((user) => user.id === selectedId);
-        if (user) {
-            setSelectedAccount({
-                id: user.id,
-                name: user.name,
-                account: user.account
-            });
-            router.push(`/account-list/account`);
-        }
-      }
-  }, [selectedId, setSelectedAccount, router]);
-
-  const handleSelect = (id) => {
-    setSelectedId(id);
-    
+  const {selectedAccount} = useTransactionStore();
+  const handleSelect = (user) => {
+    setSelectedAccount({
+        id: user.id,
+        name: user.name,
+        account: user.account
+    });
+    router.push(`/account-list/account`);
   };
-
   return (
     <div className="max-w-md mx-auto bg-gray-100 shadow-lg h-screen flex flex-col">
       <div className="flex justify-between p-4">
         <h1 className="text-lg font-bold">이체</h1>
         <button className="text-gray-500">닫기</button>
       </div>
-      
       <div className="flex-1 overflow-y-auto scrollbar-hide">
         {dummyData.map((user) => (
           <TransactionList // 추후에 사진을 넣어야함
@@ -56,13 +40,11 @@ export default function Page() {
             name={user.name}
             account={user.account}
             bank={"우리은행"}
-            isSelected={user.id === selectedId}
-            onClick={() => handleSelect(user.id)}
+            isSelected={user.id === selectedAccount?.id}
+            onClick={() => handleSelect(user)}
           />
         ))}
       </div>
-        
-      
     </div>
   );
 }

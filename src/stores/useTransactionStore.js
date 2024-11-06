@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+
 const useTransactionStore = create((set) => ({
     selectedAccount: null,
     transferAmount: 0,
@@ -6,4 +7,5 @@ const useTransactionStore = create((set) => ({
     setTransferAmount: (amount) => set({ transferAmount: amount }),
     clearTransferData: () => set({ selectedAccount: null, transferAmount: 0}),
   }));
+
   export default useTransactionStore;

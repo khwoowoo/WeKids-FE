@@ -1,5 +1,3 @@
-"use client";
-
 import TopBar from "@/src/ui/Components/transactions/transavtions-history/TopBar";
 import { TransactionFilter } from "@/src/ui/Components/transactions/transavtions-history/TransactionFilter";
 import { TransactionsView } from "@/src/ui/Components/transactions/transavtions-history/TransactionsView";
@@ -13,7 +11,7 @@ export default function Page() {
                 <TopBar
                   name="조예은" 
                   balance="110000009862" 
-                  accountNumber="3333-10-0745950"
+                  accountNumber="1111-11-111111"
                 />
             </Box>
             <Box>

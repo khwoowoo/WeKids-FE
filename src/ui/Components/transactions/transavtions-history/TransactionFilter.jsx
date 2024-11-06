@@ -6,7 +6,7 @@ import useTransFilterStore, { RangeEnum } from "@/src/stores/useTransFilterStore
 export const TransactionFilter = () => {
   const { range, setRange} = useTransFilterStore();
   const { type, setType } = useTransFilterStore();
-  const [time, setTime] = useState("최신순");
+  const { sortingType, setSortingType } = useTransFilterStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ export const TransactionFilter = () => {
           />
         </Flex>
         <Box onClick={() => setIsModalOpen(true)} className="text-xs font-medium text-gray-700">
-          {`${range} · ${type} · ${time} ▼`}
+          {`${range} · ${type} · ${sortingType} ▼`}
         </Box>
       </Flex>
       {isModalOpen && (

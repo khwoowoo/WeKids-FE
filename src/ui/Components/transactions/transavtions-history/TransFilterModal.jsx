@@ -1,4 +1,4 @@
-import useTransFilterStore, { RangeEnum, TpyeEnum } from "@/src/stores/useTransFilterStore";
+import useTransFilterStore, { RangeEnum, SortEnum, TpyeEnum } from "@/src/stores/useTransFilterStore";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import { Flex, Box, Button, Text } from "@radix-ui/themes";
 
@@ -6,6 +6,7 @@ export const TransFilterModal = ({ onClose }) => {
     const { range, setRange } = useTransFilterStore();
     const { startDate, setStartDate, endDate, setEndDate } = useTransFilterStore();
     const { type, setType } = useTransFilterStore();
+    const { sortingType, setSortingType } = useTransFilterStore();
 
     return (
         <Flex justify="center" align="end" className="fixed top-0 bottom-0 left-0 right-0 z-50 bg-black bg-opacity-50">
@@ -70,6 +71,26 @@ export const TransFilterModal = ({ onClose }) => {
                                 value={label}
                                 className={`text-black text-sm w-[120px] h-10 border ${
                                 index < Object.values(TpyeEnum).length - 1 ? "border-r-0" : ""
+                                } border-gray-500 text-gray-700 bg-gray-200 data-[state=checked]:bg-white data-[state=checked]:border-black transition-colors`}
+                            >
+                                {label}
+                            </RadioGroup.Item>
+                            ))}
+                        </RadioGroup.Root>
+                </Flex>
+                <Flex align="center" direction="column" className="pt-5">
+                        <Text className="text-sm font-bold text-gray-500">정렬선택</Text>
+                        <RadioGroup.Root 
+                            value={sortingType}
+                            onValueChange={(value) => setSortingType(value)}
+                            className="flex p-3"
+                        >
+                            {Object.values(SortEnum).map((label, index) => (
+                            <RadioGroup.Item
+                                key={label}
+                                value={label}
+                                className={`text-black text-sm w-[180px] h-10 border ${
+                                index < Object.values(SortEnum).length - 1 ? "border-r-0" : ""
                                 } border-gray-500 text-gray-700 bg-gray-200 data-[state=checked]:bg-white data-[state=checked]:border-black transition-colors`}
                             >
                                 {label}

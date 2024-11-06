@@ -13,6 +13,12 @@ export const TpyeEnum = {
     WITHDRAWAL: "출력만",
 };
 
+export const SortEnum = {
+    NEWEST: "최신순",
+    OLDEST: "과거순",
+};
+
+
 const today = new Date();
 
 const useTransFilterStore = create((set) => ({
@@ -27,7 +33,10 @@ const useTransFilterStore = create((set) => ({
     type: TpyeEnum.ALL,
     setType: (newType) => set({ type: newType }),
 
-    resetFilter: () => set({ range: RangeEnum.ONE_MONTH, Type: TpyeEnum.ALL,startDate: today, endDate: today }),
+    sortingType: SortEnum.NEWEST,
+    setSortingType: (sortType) => set({ sortingType: sortType }),
+
+    resetFilter: () => set({ range: RangeEnum.ONE_MONTH, Type: TpyeEnum.ALL, sortingType: SortEnum.NEWEST,startDate: today, endDate: today }),
 }));
   
 export default useTransFilterStore;

@@ -1,7 +1,8 @@
 'use client'
+
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import TransactionList from "@/src/ui/Components/atoms/TransactionList";
+import TransactionList from "@/src/ui/Components/atoms/TransferItem";
 import useTransactionStore from "@/src/stores/useTransactionStore";
 
 const dummyData = [

@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import "@radix-ui/themes/styles.css";
 
 export const metadata = {
   title: "Create Next App",

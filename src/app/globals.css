@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #b2d7f8;
   --foreground: #171717;
 }
 
@@ -60,7 +60,6 @@ body {
   margin: 0 auto;
   background-color: #a7a1a1;
   position: relative;
-  padding-bottom: 60px;
   box-sizing: border-box;
 }
   

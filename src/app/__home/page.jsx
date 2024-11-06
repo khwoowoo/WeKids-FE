@@ -1,4 +1,4 @@
-import Header from "@/src/ui/Components/Header";
+import Header from "@/src/ui/layout/Header";
 import BlueBox from "@/src/ui/Components/home/BlueBox";
 
 export default function MainHome() {

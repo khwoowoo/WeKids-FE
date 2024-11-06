@@ -4,8 +4,8 @@ import { TransFilterModal } from "./TransFilterModal";
 import useTransFilterStore, { RangeEnum } from "@/src/stores/useTransFilterStore";
   
 export const TransactionFilter = () => {
-  const {range, setRange} = useTransFilterStore();
-  const [type, setType] = useState("전체");
+  const { range, setRange} = useTransFilterStore();
+  const { type, setType } = useTransFilterStore();
   const [time, setTime] = useState("최신순");
   const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -7,10 +7,18 @@ export const RangeEnum = {
     CUSTOM: "직접설정",
   };
 
+const today = new Date();
 
 const useTransFilterStore = create((set) => ({
     range: RangeEnum.ONE_MONTH,
     setRange: (newRange) => set({ range: newRange }),
+
+    startDate: today,
+    endDate: today,
+    setStartDate: (date) => set({ startDate: date }),
+    setEndDate: (date) => set({ endDate: date }),
+
+    resetFilter: () => set({ range: RangeEnum.ONE_MONTH, startDate: today, endDate: today }),
 }));
   
 export default useTransFilterStore;

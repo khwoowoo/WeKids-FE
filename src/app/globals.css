@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #b2d7f8;
   --foreground: #171717;
 }
 
@@ -72,4 +72,15 @@ nav{
   margin-left: -196.5px;
   height: 60px;
   background-color: #703333;
+}
+
+/* Chrome, Safari, and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* IE, Edge, and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

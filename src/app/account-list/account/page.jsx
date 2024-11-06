@@ -6,6 +6,7 @@ import NextButton from '../../../ui/Components/atoms/Modal/NextButton';
 import Modal from '../../../ui/Components/atoms/Modal';
 import Profile from '../../../ui/Components/atoms/Modal/Profile';
 import TransferButton from '../../../ui/Components/atoms/Modal/Transferbutton';
+import { useSearchParams } from 'next/navigation';
 
 const dummyData = [
     { id: 1, name: '구자빈', account: '111-111-111', balance: 1000000, bank: '우리은행' },
@@ -15,17 +16,26 @@ const dummyData = [
     { id: 5, name: '최윤정', account: '555-555-555', balance: 5000000, bank: '우리은행' },
 ];
 
-const receive_dummyData = [
-    { name: '김우리', account: '666-666-666', bank: '우리은행'},
-];
+const sendUser = { name: '김우리', account: '666-666-666', balance: 50000000, bank: '우리은행' }
 
 export default function Page() {
+    
     const [amount, setAmount] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(dummyData[0]); // TODO : 추후에 현재 유저 데이터 생길시 더미데이터 빼고 외부값 넣기
-    const [receiveUser, setReceiveUser] = useState(receive_dummyData[0]); // TODO : 추후에 받는 사람 데이터 생길시 더미데이터 빼고 외부값 넣기
     const [isShaking, setIsShaking] = useState(false);
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const queryId = parseInt(searchParams.get('id'), 10);
+
+  useEffect(() => {
+    
+    const user = dummyData.find((user) => user.id === queryId);
+    if (user) {
+      setSelectedUser(user);
+    }
+  }, [queryId]);
+    
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
@@ -41,7 +51,7 @@ export default function Page() {
 
     useEffect(() => {
         router.push(`/account-list/account?id=${selectedUser.id}`);
-    }, [selectedUser])
+    }, [selectedUser]);
 
     const handleNumberClick = (num) => {
         if(num == '⌫'){
@@ -50,8 +60,8 @@ export default function Page() {
             return newAmount;
         }
         else{
-            if(parseInt(amount.toString() + num, 10) > selectedUser.balance){
-                setAmount(selectedUser.balance);
+            if(parseInt(amount.toString() + num, 10) > sendUser.balance){
+                setAmount(sendUser.balance);
                 setIsShaking(true);
                 setTimeout(() => setIsShaking(false), 500);
                 return amount;
@@ -66,7 +76,7 @@ export default function Page() {
     };
 
     const handleSetMaxAmount = () => {
-        setAmount(selectedUser.balance);
+        setAmount(sendUser.balance);
     };
 
 
@@ -75,14 +85,15 @@ export default function Page() {
             router.push('/account-list');
         }
         else{
+            //TODO: 이체처리를 하고 성공했을 경우 이동
             router.push('/account-list/account/done');
         }
         
     }
 
     const handleAddAmount = (increment) => {
-        if(amount + increment > selectedUser.balance){
-            setAmount(selectedUser.balance);
+        if(amount + increment > sendUser.balance){
+            setAmount(sendUser.balance);
             setIsShaking(true);
             setTimeout(() => setIsShaking(false), 500);
         }
@@ -94,9 +105,10 @@ export default function Page() {
     const handleUserChange = (e) => {
         const selectedName = e.target.value;
         const user = dummyData.find((user) => user.name === selectedName);
-        setSelectedUser(user);
-       
-    };
+        if (user) {
+          setSelectedUser(user);
+        }
+      };
   
     return (
     <div className="flex flex-col h-screen overflow-hidden bg-gray-100">
@@ -123,7 +135,7 @@ export default function Page() {
         <div className="flex flex-col items-center flex-grow">
             <div className="flex flex-col text-center justify-center h-1/2 ">
                 <div className={`${isShaking ? 'shake-animation': ''} text-4xl font-bold ${isShaking ? 'text-red-600' : 'text-slate-900'}`}>{amount.toLocaleString()}원</div>
-                <div className="text-red-600">{isShaking ? `${selectedUser.balance.toLocaleString()}원 까지만 이체 가능합니다.` : ''}</div>
+                <div className="text-red-600">{isShaking ? `${sendUser.balance.toLocaleString()}원 까지만 이체 가능합니다.` : ''}</div>
             </div>
             <div className="bottom-0 fixed">
             <div className="flex space-x-4 justify-center">
@@ -156,9 +168,9 @@ export default function Page() {
             >
                 <div className="flex flex-col items-center mt-4">
                     <Profile />
-                    <p className="text-base mt-2"><span className="font-bold text-lg">{receiveUser.name}</span>님에게  <span className="font-bold text-lg">{amount.toLocaleString()}원</span> </p>
+                    <p className="text-base mt-2"><span className="font-bold text-lg">{selectedUser.name}</span>님에게  <span className="font-bold text-lg">{amount.toLocaleString()}원</span> </p>
                     <p className="text-base mt-1">이체하시겠습니까?</p>
-                    <p className="text-xs mt-5 text-gray-400">받는계좌 :  {receiveUser.bank + " " + receiveUser.account}</p>
+                    <p className="text-xs mt-5 text-gray-400">받는계좌 :  {selectedUser.bank + " " + selectedUser.account}</p>
                 </div>
                 <div className="flex space-x-3 mt-7">   
                     <TransferButton text={"취소"} onClick={closeModal}/>

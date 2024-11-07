@@ -1,4 +1,4 @@
-import ShareButton from "@/src/ui/components/atoms/Modal/Sharebutton";
+import ShareButton from "@/src/ui/components/atoms/Sharebutton";
 import ConfirmButton from "@/src/ui/components/transactions/detail/ConfirmButton";
 import TransactionDetail from "@/src/ui/components/transactions/detail/TransactionDetail";
 import Memo from "@/src/ui/components/transactions/detail/Memo";

@@ -1,8 +1,8 @@
 import React from "react";
 import Modal from "@/src/ui/components/atoms/Modal";
-import Profile from "@/src/ui/components/atoms/Modal/Profile";
-import TransferButton from "@/src/ui/components/atoms/Modal/Transferbutton";
-import NextButton from "@/src/ui/components/atoms/Modal/NextButton";
+import Profile from "@/src/ui/components/atoms/Profile";
+import TransferButton from "@/src/ui/components/atoms/Transferbutton";
+import NextButton from "@/src/ui/components/atoms/NextButton";
 
 const TransferModal = ({
   isModalOpen,

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import ShareButton from "@/src/ui/components/atoms/Modal/Sharebutton";
-import NextButton from "@/src/ui/components/atoms/Modal/NextButton";
+import ShareButton from "@/src/ui/components/atoms/Sharebutton";
+import NextButton from "@/src/ui/components/atoms/NextButton";
 
 const Page = () => {
   const [transferData, setTransferData] = useState({

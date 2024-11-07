@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import KeyPad from "@/src/ui/components/atoms/KeyPad";
-import NextButton from "@/src/ui/components/atoms/Modal/NextButton";
+import NextButton from "@/src/ui/components/atoms/NextButton";
 import useTransactionStore from "@/src/stores/useTransactionStore.js";
 import TransferAmountDisplay from "@/src/ui/components/transactions/transfer/TransferAmoutDisplay";
 import TransferOptions from "@/src/ui/components/transactions/transfer/TransferOptions";

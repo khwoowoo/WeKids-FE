@@ -1,6 +1,6 @@
 "use client";
 import useAccountInfoStore from "@/src/stores/useAccountInfoStore";
-import Profile from "@/src/ui/components/atoms/Modal/Profile";
+import Profile from "@/src/ui/components/atoms/Profile";
 import BlueCardBox from "@/src/ui/components/home/BlueCardBox";
 import { useEffect } from "react";
 

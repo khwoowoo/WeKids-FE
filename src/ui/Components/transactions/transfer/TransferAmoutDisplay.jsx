@@ -1,4 +1,8 @@
 import React, { useEffect } from 'react';
+import {urlPath} from '@/src/constants/common';
+import { useRouter } from "next/navigation";
+import { Box } from "@radix-ui/themes";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 const dummyData = [
     { id: 1, name: '구자빈', account: '111-111-111', bank: '우리은행' },
@@ -11,21 +15,36 @@ const dummyData = [
 const TransferAmountDisplay = ({ 
     selectedAccount, 
     transferAmount, 
+    clearTransferData,
     sendUser, 
     isShaking, 
     handleUserChange, 
-    routeControll 
 }) => {
     useEffect(() => {
         if (!selectedAccount) {
-            routeControll('cancel');
+            router.back();
         }
     }, [selectedAccount]);
+    
+    const router = useRouter();
+
+    const btnHandler = (action) => {
+        clearTransferData();
+        setTimeout(() => {
+            if (action === 'back') {
+                router.back();
+            } else if (action === 'cancel') {
+                router.push(urlPath.ACCOUNT_LIST);
+            }
+        }, 0);
+    };
 
     return (
         <div className="flex flex-col items-center w-full p-4 absolute h-3/5">
             <div className="flex justify-between items-center w-full mb-4">
-                <button className="text-lg" onClick={() => routeControll('cancel')}>←</button>
+            <Box onClick={() => btnHandler("back")}>
+          <ArrowLeftIcon className="w-5 h-5 text-black cursor-pointer" />
+            </Box>
                 <div className="text-center">
                     <div>
                         <select
@@ -44,7 +63,7 @@ const TransferAmountDisplay = ({
                         {"우리은행"} {selectedAccount.account}
                     </div>
                 </div>
-                <button className="text-lg" onClick={() => routeControll("cancel")}>취소</button>
+                <button className="text-lg" onClick={() => btnHandler("cancel")}>취소</button>
             </div>
             <div className="flex flex-col items-center justify-center h-1/2 mt-8">
                 <div className={`text-4xl font-bold ${isShaking ? 'text-red-600 shake-animation' : 'text-slate-900'}`}>

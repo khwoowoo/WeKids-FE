@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import KeyPad from "@/src/ui/components/atoms/KeyPad";
 import NextButton from "@/src/ui/components/atoms/NextButton";
-import {useTransactionStore} from "@/src/stores/transactionStore";
+import { useTransactionStore } from "@/src/stores/transactionStore";
 import TransferAmountDisplay from "@/src/ui/components/transactions/transfer/TransferAmoutDisplay";
 import TransferOptions from "@/src/ui/components/transactions/transfer/TransferOptions";
 import TransferModal from "@/src/ui/components/transactions/transfer/TransferModal";
-import {urlPath} from "@/src/constants/common";
+import { urlPath } from "@/src/constants/common";
 
 const dummyData = [
   { id: 1, name: "구자빈", account: "111-111-111", bank: "우리은행" },
@@ -22,7 +22,6 @@ const sendUser = { name: "김우리", account: "666-666-666", balance: 50000000,
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
-  const router = useRouter();
   const { selectedAccount, setSelectedAccount, transferAmount, setTransferAmount, clearTransferData } =
     useTransactionStore();
 
@@ -67,14 +66,6 @@ export default function Page() {
     }
   };
 
-  const routeControll = (text) => {
-    if (text === "cancel") {
-      router.push(urlPath.ACCOUNT_LIST);
-      clearTransferData();
-    } else {
-      router.push(urlPath.DONE);
-    }
-  };
 
   if (!selectedAccount) redirect(urlPath.ACCOUNT_LIST);
 
@@ -91,10 +82,10 @@ export default function Page() {
       <TransferAmountDisplay
         selectedAccount={selectedAccount}
         transferAmount={transferAmount}
+        clearTransferData={clearTransferData}
         sendUser={sendUser}
         isShaking={isShaking}
         handleUserChange={(e) => handleUserChange(e)}
-        routeControll={routeControll}
       />
       <div className="bottom-0 fixed">
         <TransferOptions
@@ -111,7 +102,6 @@ export default function Page() {
         closeModal={closeModal}
         selectedAccount={selectedAccount}
         transferAmount={transferAmount}
-        routeControll={routeControll}
       />
     </div>
   );

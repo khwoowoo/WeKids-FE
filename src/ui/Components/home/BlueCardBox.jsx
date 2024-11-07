@@ -5,10 +5,13 @@ import { characterInfoMap } from "@/src/constants/common"; // 상대 경로로 �
 import { Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import { CopyIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
+import { urlPath } from "@/src/constants/common";
 
 const BlueCardBox = () => {
   const { selectedAccount } = useAccountInfoStore(); // Zustand에서 selectedAccount 가져오기
   const [backgroundColorClass, setBackgroundColorClass] = useState(""); // backgroundColorClass 상태 추가
+  const router = useRouter();
 
   useEffect(() => {
     if (selectedAccount) {
@@ -50,10 +53,10 @@ const BlueCardBox = () => {
       <div className="mt-auto">
         <div className="w-full h-[1px] bg-white/20"></div>
         <div className="flex text-white">
-          <button className="flex-1 py-4 text-center border-r border-white/20 hover:bg-white/10 transition-colors">
+          <button className="flex-1 py-4 text-center border-r border-white/20 hover:bg-white/10 transition-colors" onClick={() => router.push(urlPath.TRANSACTION_HISTORY)}>
             조회
           </button>
-          <button className="flex-1 py-4 text-center hover:bg-white/10 transition-colors">
+          <button className="flex-1 py-4 text-center hover:bg-white/10 transition-colors" onClick={() => router.push(urlPath.ACCOUNT_LIST)}>
             이체
           </button>
         </div>

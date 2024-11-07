@@ -3,14 +3,17 @@ import Modal from "@/src/ui/components/atoms/Modal";
 import Profile from "@/src/ui/components/atoms/Profile";
 import TransferButton from "@/src/ui/components/atoms/Transferbutton";
 import NextButton from "@/src/ui/components/atoms/NextButton";
+import { useRouter } from "next/navigation";
+import {urlPath} from "@/src/constants/common";
 
 const TransferModal = ({
   isModalOpen,
   closeModal,
   selectedAccount,
   transferAmount,
-  routeControll,
-}) => (
+}) => {
+  const router = useRouter();
+  return (
   <Modal
     isOpen={isModalOpen}
     onClose={closeModal}
@@ -30,9 +33,10 @@ const TransferModal = ({
     </div>
     <div className="flex space-x-3 mt-7">
       <TransferButton text={"취소"} onClick={closeModal} />
-      <NextButton text={"이체하기"} onClick={() => routeControll("done")} />
+      <NextButton text={"이체하기"} onClick={() => router.push(urlPath.DONE)} />
     </div>
   </Modal>
-);
+  )
+};
 
 export default TransferModal;

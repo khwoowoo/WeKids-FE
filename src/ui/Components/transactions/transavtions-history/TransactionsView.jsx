@@ -3,7 +3,7 @@ import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { Flex } from "@radix-ui/themes";
 import { TransactionItem } from "./TransactionItem";
-import useTransFilterStore from "@/src/stores/useTransFilterStore";
+import { useTransFilterStore } from "@/src/stores/transactionStore";
 
 export const TransactionsView = () => {
   const [transactions, setTransactions] = useState([]);
@@ -17,10 +17,34 @@ export const TransactionsView = () => {
     }
 
     const newTransactions = [
-      { date: '2023-10-26', title: '네이버페이', amount: '-500', balance: '12837132', isIncome: false },
-      { date: '2023-10-25', title: '스타벅스', amount: '-4500', balance: '12832632', isIncome: false },
-      { date: '2023-10-24', title: '카카오페이', amount: '-2000', balance: '12830000', isIncome: false },
-      { date: '2023-10-23', title: '편의점', amount: '-1500', balance: '12828500', isIncome: false },
+      {
+        date: "2023-10-26",
+        title: "네이버페이",
+        amount: "-500",
+        balance: "12837132",
+        isIncome: false,
+      },
+      {
+        date: "2023-10-25",
+        title: "스타벅스",
+        amount: "-4500",
+        balance: "12832632",
+        isIncome: false,
+      },
+      {
+        date: "2023-10-24",
+        title: "카카오페이",
+        amount: "-2000",
+        balance: "12830000",
+        isIncome: false,
+      },
+      {
+        date: "2023-10-23",
+        title: "편의점",
+        amount: "-1500",
+        balance: "12828500",
+        isIncome: false,
+      },
     ];
 
     setTransactions((prev) => [...prev, ...newTransactions]);
@@ -28,9 +52,7 @@ export const TransactionsView = () => {
 
   // 검색어에 따라 필터링된 트랜잭션
   const filteredTransactions = transactions
-    .filter((transaction) =>
-      transaction.title.toLowerCase().includes(search.toLowerCase())
-    )
+    .filter((transaction) => transaction.title.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => {
       // 날짜 정렬 적용
       if (sortingType === "최신순") {
@@ -46,7 +68,11 @@ export const TransactionsView = () => {
         pageStart={0}
         loadMore={loadMore}
         hasMore={hasMore}
-        loader={<div className="loader" key={0}>Loading ...</div>}
+        loader={
+          <div className="loader" key={0}>
+            Loading ...
+          </div>
+        }
         useWindow={false}
       >
         {filteredTransactions.map((transaction, index) => (

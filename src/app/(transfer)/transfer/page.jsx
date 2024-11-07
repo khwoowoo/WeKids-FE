@@ -4,7 +4,7 @@ import { redirect, useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import KeyPad from "@/src/ui/components/atoms/KeyPad";
 import NextButton from "@/src/ui/components/atoms/NextButton";
-import useTransactionStore from "@/src/stores/useTransactionStore.js";
+import { useTransactionStore } from "@/src/stores/transactionStore";
 import TransferAmountDisplay from "@/src/ui/components/transactions/transfer/TransferAmoutDisplay";
 import TransferOptions from "@/src/ui/components/transactions/transfer/TransferOptions";
 import TransferModal from "@/src/ui/components/transactions/transfer/TransferModal";

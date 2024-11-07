@@ -1,13 +1,8 @@
 "use client";
-import { useMemoStore } from "@/src/stores/useMemoStore";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Memo = ({ data }) => {
-  const { memo, setMemo } = useMemoStore();
-
-  useEffect(() => {
-    setMemo(data);
-  }, [data, setMemo]);
+  const [memo, setMemo] = useState(data);
 
   return (
     <div className="w-full my-5">

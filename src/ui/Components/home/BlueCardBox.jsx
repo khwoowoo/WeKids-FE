@@ -1,10 +1,10 @@
 "use client";
 
-import Copy from "@/public/icons/copyIcon.svg";
 import { useAccountInfoStore } from "@/src/stores/accountStore";
 import { characterInfoMap } from "@/src/constants/common"; // 상대 경로로 불러오기
 import { Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
+import { CopyIcon } from "@radix-ui/react-icons";
 
 const BlueCardBox = () => {
   const { selectedAccount } = useAccountInfoStore(); // Zustand에서 selectedAccount 가져오기
@@ -37,7 +37,7 @@ const BlueCardBox = () => {
       <div className="text-left px-5">
         <div className="flex items-center space-x-2 mt-[25px]">
           <Text className="wooridaumB text-sm">{selectedAccount.accountNumber}</Text>
-          <Copy />
+          <CopyIcon />
         </div>
         <Text className="wooridaumB text-xl mt-[32px]">{selectedAccount.name}</Text>
       </div>

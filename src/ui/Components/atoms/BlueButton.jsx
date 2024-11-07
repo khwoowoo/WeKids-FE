@@ -1,21 +1,21 @@
-'use client';
-import React from 'react';
+"use client";
+import React from "react";
 
 const BLUE_BUTTON_DEFAULT = {
   width: "w-[76px]",
   height: "h-[57px]",
-  bgColor: "bg-[#123F6D]",
-  hoverColor: "hover:bg-[#0e325a]",
+  bgColor: "bg-sub02",
+  hoverColor: "hover:bg-sub01",
 };
 
-const BlueButton = ({ 
+const BlueButton = ({
   onClick,
-  width = BLUE_BUTTON_DEFAULT.width, 
+  width = BLUE_BUTTON_DEFAULT.width,
   height = BLUE_BUTTON_DEFAULT.height,
-  bgColor = BLUE_BUTTON_DEFAULT.bgColor 
+  bgColor = BLUE_BUTTON_DEFAULT.bgColor,
 }) => {
   return (
-    <button 
+    <button
       onClick={onClick}
       className={`
         ${width}
@@ -28,8 +28,7 @@ const BlueButton = ({
         transition-colors
         duration-300
       `}
-    >
-    </button>
+    ></button>
   );
 };
 

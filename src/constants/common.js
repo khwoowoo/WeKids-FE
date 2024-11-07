@@ -4,7 +4,7 @@ export const characterInfoMap = {
   WEBEE: {
     name: "위비",
     imagePath: "/images/accountWeebeeImg.svg", // 위비 이미지 경로
-    colorClass: "bg-mainColor", // CSS 클래스 이름으로 색상 관리
+    colorClass: "bg-main02", // CSS 클래스 이름으로 색상 관리
   },
   BOMBOM: {
     name: "봄봄",
@@ -35,9 +35,9 @@ export const characterInfoMap = {
 };
 
 export const urlPath = {
-    HOME: "/",
-    TRANSACTION_HISTORY: "/transaction-history", 
-    ACCOUNT_LIST: "/account-list",
-    TRANSFER: "/transfer",
-    DONE: "/transfer/done",
+  HOME: "/",
+  TRANSACTION_HISTORY: "/transaction-history",
+  ACCOUNT_LIST: "/account-list",
+  TRANSFER: "/transfer",
+  DONE: "/transfer/done",
 };

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import React from "react";
-import {urlPath} from "@/src/constants/common";
+import { urlPath } from "@/src/constants/common";
 
 const ConfirmButton = () => {
   const router = useRouter();
@@ -13,7 +13,7 @@ const ConfirmButton = () => {
 
   return (
     <button
-      className="w-[400px] bg-mainColor text-white flex items-center justify-center"
+      className="w-[400px] bg-main02 text-white flex items-center justify-center"
       onClick={handleClickConfirm}
     >
       확인

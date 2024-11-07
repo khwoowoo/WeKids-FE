@@ -19,7 +19,7 @@ const BlueCardBox = () => {
 
       const bgClass = accountCharacterInfo.colorClass
         ? `${accountCharacterInfo.colorClass}` // 예: bg-color-dalbo
-        : "bg-mainColor"; // colorClass가 없으면 기본값을 bg-mainColor로 설정
+        : "bg-main02"; // colorClass가 없으면 기본값을 bg-main02로 설정
 
       console.log("bgClass " + bgClass);
 

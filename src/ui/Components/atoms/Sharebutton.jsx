@@ -4,7 +4,7 @@ import { Share2Icon } from "@radix-ui/react-icons";
 const SHARE_BUTTON_DEFAULT = {
   width: "w-[76px]",
   height: "h-[57px]",
-  bgColor: "bg-[#123F6D]",
+  bgColor: "bg-sub02",
   iconColor: "text-white",
   radius: "rounded-[10px]",
 };

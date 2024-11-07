@@ -23,7 +23,7 @@ export default function TopBar({ name, balance, accountNumber }) {
   };
 
   return (
-    <Flex align="center" justify="between" direction="column" className="bg-mainColor h-[40vh]">
+    <Flex align="center" justify="between" direction="column" className="bg-main02 h-[40vh]">
       <Flex align="center" justify="between" direction="row" className="w-full pt-8 pl-3 pr-3">
         <Box onClick={handleBackClick}>
           <ArrowLeftIcon className="w-5 h-5 text-white" />

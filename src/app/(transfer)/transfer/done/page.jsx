@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ShareButton from "@/src/ui/components/atoms/Sharebutton";
 import NextButton from "@/src/ui/components/atoms/NextButton";
-import {urlPath} from "@/src/constants/common";
+import { urlPath } from "@/src/constants/common";
 
 const Page = () => {
   const [transferData, setTransferData] = useState({
@@ -17,7 +17,7 @@ const Page = () => {
     <main className="min-h-screen bg-white flex flex-col">
       <div className="flex-1 flex flex-col items-center justify-center">
         {/* 노란색 체크 원 */}
-        <div className="w-[60px] h-[60px] rounded-full bg-[#FFD600] flex items-center justify-center mb-6">
+        <div className="w-[60px] h-[60px] rounded-full bg-main02 flex items-center justify-center mb-6">
           <svg
             width="42"
             height="42"
@@ -69,8 +69,8 @@ const Page = () => {
             height="h-[62px]"
             padding="px-[82px] py-[22px]"
             radius="rounded-[11px]"
-            bgColor="bg-[#2483C5]"
-            onClick={()=>router.push(urlPath.HOME)}
+            bgColor="bg-main02"
+            onClick={() => router.push(urlPath.HOME)}
           />
         </div>
       </div>

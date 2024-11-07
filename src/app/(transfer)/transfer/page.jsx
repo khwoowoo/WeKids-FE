@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import { redirect } from "next/navigation";
 import KeyPad from "@/src/ui/components/atoms/KeyPad";
 import { useTransactionStore } from "@/src/stores/transactionStore";
-import TransferAmountDisplay from "@/src/ui/components/transactions/transfer/TransferAmoutDisplay";
-import TransferOptions from "@/src/ui/components/transactions/transfer/TransferOptions";
-import TransferModal from "@/src/ui/components/transactions/transfer/TransferModal";
+import TransferAmountDisplay from "@/src/ui/components/transfer/TransferAmoutDisplay";
+import TransferOptions from "@/src/ui/components/transfer/TransferOptions";
+import TransferModal from "@/src/ui/components/transfer/TransferModal";
 import { urlPath } from "@/src/constants/common";
 import CustomButton from "@/src/ui/components/atoms/CustomButton";
 

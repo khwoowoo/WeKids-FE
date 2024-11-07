@@ -19,9 +19,6 @@ const dummyData = [
   { id: 10, name: "라우리", account: "000-000-000" },
 ];
 export default function Page() {
-
-  
-
   const router = useRouter();
   const { selectedAccount, setSelectedAccount } = useTransactionStore();
   const handleSelect = (user) => {
@@ -33,12 +30,13 @@ export default function Page() {
     router.push(urlPath.TRANSFER);
   };
 
-
   return (
     <div className="max-w-md mx-auto bg-gray-100 shadow-lg h-screen flex flex-col">
       <div className="flex justify-between p-4">
         <h1 className="text-lg font-bold">이체</h1>
-        <button className="text-gray-500" onClick = {() => router.push(urlPath.HOME)}>닫기</button>
+        <button className="text-gray-500" onClick={() => router.push(urlPath.HOME)}>
+          닫기
+        </button>
       </div>
       <div className="flex-1 overflow-y-auto scrollbar-hide">
         {dummyData.map((user) => (

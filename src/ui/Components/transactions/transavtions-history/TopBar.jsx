@@ -1,12 +1,14 @@
 "use client";
 import { Box, Flex } from "@radix-ui/themes";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import SettingIcon from "@/public/icons/setting.svg";
 
 export default function TopBar({ name, balance, accountNumber }) {
   const router = useRouter();
 
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard
+      .writeText(text)
       .then(() => alert("클립보드에 복사되었습니다!"))
       .catch((err) => console.error("복사 실패:", err));
   };
@@ -21,23 +23,19 @@ export default function TopBar({ name, balance, accountNumber }) {
   };
 
   return (
-    <Flex 
-      align="center" 
-      justify="between"
-      direction="column" 
-      className="bg-[#2483C5] h-[40vh]"
-    >
+    <Flex align="center" justify="between" direction="column" className="bg-[#2483C5] h-[40vh]">
       <Flex align="center" justify="between" direction="row" className="w-full pt-8 pl-3 pr-3">
-        <Box onClick={handleBackClick} >
+        <Box onClick={handleBackClick}>
           <img src="/icons/backarrow.svg" />
         </Box>
         <h1>{name}의 통장</h1>
-        <Box onClick={handleSettingsClick} >
-          <img src="/icons/setting.svg" />
+        <Box onClick={handleSettingsClick}>
+          {/* <img src="/icons/setting.svg" /> */}
+          <SettingIcon />
         </Box>
       </Flex>
       <Flex direction="column" align="center">
-        <p 
+        <p
           className="text-sm text-gray-300 cursor-pointer"
           onClick={() => copyToClipboard(accountNumber)}
           title="클릭하여 복사"
@@ -47,8 +45,12 @@ export default function TopBar({ name, balance, accountNumber }) {
         <h2 className="text-3xl font-bold">{Number(balance).toLocaleString()}원</h2>
       </Flex>
       <Flex justify="between" direction="row" className="gap-3 m-8 mt-4">
-        <button onClick={()=>{}} className="py-3 text-white rounded-lg bg-black/10 px-9">이체하기</button>
-        <button onClick={()=>{}} className="py-3 text-white rounded-lg bg-black/10 px-9">가져오기</button>
+        <button onClick={() => {}} className="py-3 text-white rounded-lg bg-black/10 px-9">
+          이체하기
+        </button>
+        <button onClick={() => {}} className="py-3 text-white rounded-lg bg-black/10 px-9">
+          가져오기
+        </button>
       </Flex>
     </Flex>
   );

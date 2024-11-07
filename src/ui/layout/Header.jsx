@@ -1,7 +1,7 @@
 // components/Header.js
 
 import AlarmIcon from "@/public/icons/AlarmIcon";
-import PersonIcon from "@/public/icons/personIcon";
+import PersonIcon from "@/public/icons/PersonIcon";
 
 export default function Header() {
   return (

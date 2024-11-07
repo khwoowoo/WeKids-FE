@@ -1,5 +1,3 @@
-export default function PersonIcon() {
-  return (
     <svg
       width="24"
       height="24"
@@ -22,5 +20,3 @@ export default function PersonIcon() {
         strokeLinejoin="round"
       />
     </svg>
-  );
-}

@@ -12,7 +12,7 @@ const ConfirmButton = () => {
 
   return (
     <button
-      className="w-[400px] bg-[#2483C5] text-white flex items-center justify-center"
+      className="w-[400px] bg-mainColor text-white flex items-center justify-center"
       onClick={handleClickConfirm}
     >
       확인

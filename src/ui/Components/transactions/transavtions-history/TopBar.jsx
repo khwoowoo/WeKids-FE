@@ -1,7 +1,8 @@
 "use client";
 import { Box, Flex } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
-import SettingIcon from "@/public/icons/setting.svg";
+import SettingIcon from "@/public/icons/settingIcon.svg";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 export default function TopBar({ name, balance, accountNumber }) {
   const router = useRouter();
@@ -26,11 +27,10 @@ export default function TopBar({ name, balance, accountNumber }) {
     <Flex align="center" justify="between" direction="column" className="bg-[#2483C5] h-[40vh]">
       <Flex align="center" justify="between" direction="row" className="w-full pt-8 pl-3 pr-3">
         <Box onClick={handleBackClick}>
-          <img src="/icons/backarrow.svg" />
+          <ArrowLeftIcon className="w-5 h-5 text-white" />
         </Box>
         <h1>{name}의 통장</h1>
         <Box onClick={handleSettingsClick}>
-          {/* <img src="/icons/setting.svg" /> */}
           <SettingIcon />
         </Box>
       </Flex>

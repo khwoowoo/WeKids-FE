@@ -2,7 +2,7 @@
 
 import Copy from "@/public/icons/copyIcon.svg";
 import { useAccountInfoStore } from "@/src/stores/accountStore";
-import { characterInfoMap } from "@/src/util/characterInfo"; // 상대 경로로 불러오기
+import { characterInfoMap } from "@/src/constants/common"; // 상대 경로로 불러오기
 import { Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 
@@ -18,7 +18,7 @@ const BlueCardBox = () => {
       console.log("accountCharacterInfo.name " + accountCharacterInfo.name);
 
       const bgClass = accountCharacterInfo.colorClass
-        ? `bg-${accountCharacterInfo.colorClass}` // 예: bg-color-dalbo
+        ? `${accountCharacterInfo.colorClass}` // 예: bg-color-dalbo
         : "bg-mainColor"; // colorClass가 없으면 기본값을 bg-mainColor로 설정
 
       console.log("bgClass " + bgClass);
@@ -42,7 +42,7 @@ const BlueCardBox = () => {
         <Text className="wooridaumB text-xl mt-[32px]">{selectedAccount.name}</Text>
       </div>
       <div className="absolute right-0 top-0 ">
-        <img src="/images/account_weebeeIcon.svg" alt="Mascot" />
+        <img src="/images/accountWeebeeImg.svg" alt="Mascot" />
       </div>
       <Text className="wooridaumB text-[28px] mt-[48px] text-right">
         {selectedAccount.balance.toLocaleString()} 원

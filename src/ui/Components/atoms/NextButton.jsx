@@ -5,7 +5,7 @@ const BUTTON_DEFAULT = {
   width: "w-[400px]",
   height: "h-[61px]",
   text: "다음",
-  bgColor: "bg-[#2483C5]",
+  bgColor: `bg-mainColor`,
   hoverColor: "hover:bg-[#1f6ea3]",
   textColor: "text-white",
   radius: "rounded-md",

@@ -6,7 +6,7 @@ import PersonIcon from "@/public/icons/personIcon.svg";
 export default function Header() {
   return (
     <header className="flex justify-between items-center px-5 py-3 bg-gray-100 border-b border-gray-300">
-      <img src="/images/logoIcon.svg" alt="Logo" className="h-6 w-auto" />
+      <img src="/images/logoImg.svg" alt="Logo" className="h-6 w-auto" />
       <div className="flex space-x-4">
         {/* 알람 아이콘 */}
         <AlarmIcon className="h-6 w-6 cursor-pointer" />

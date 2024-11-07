@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import TransactionList from "@/src/ui/components/atoms/TransferItem";
 import { useTransactionStore } from "@/src/stores/transactionStore";
-import {urlPath} from "@/src/constants/common";
+import { urlPath } from "@/src/constants/common";
 
 const dummyData = [
   { id: 1, name: "구자빈", account: "111-111-111" },
@@ -19,6 +19,9 @@ const dummyData = [
   { id: 10, name: "라우리", account: "000-000-000" },
 ];
 export default function Page() {
+
+  
+
   const router = useRouter();
   const { selectedAccount, setSelectedAccount } = useTransactionStore();
   const handleSelect = (user) => {
@@ -29,11 +32,13 @@ export default function Page() {
     });
     router.push(urlPath.TRANSFER);
   };
+
+
   return (
     <div className="max-w-md mx-auto bg-gray-100 shadow-lg h-screen flex flex-col">
       <div className="flex justify-between p-4">
         <h1 className="text-lg font-bold">이체</h1>
-        <button className="text-gray-500">닫기</button>
+        <button className="text-gray-500" onClick = {() => router.push(urlPath.HOME)}>닫기</button>
       </div>
       <div className="flex-1 overflow-y-auto scrollbar-hide">
         {dummyData.map((user) => (

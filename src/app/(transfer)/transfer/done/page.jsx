@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ShareButton from "@/src/ui/components/atoms/Sharebutton";
 import NextButton from "@/src/ui/components/atoms/NextButton";
 import {urlPath} from "@/src/constants/common";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [transferData, setTransferData] = useState({
@@ -12,7 +13,7 @@ const Page = () => {
     bankName: "하나",
     memo: "메모입력..",
   });
-
+  const router = useRouter();
   return (
     <main className="min-h-screen bg-white flex flex-col">
       <div className="flex-1 flex flex-col items-center justify-center">

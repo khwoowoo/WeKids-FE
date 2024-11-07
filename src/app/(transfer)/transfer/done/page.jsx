@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import ShareButton from "@/src/ui/components/atoms/Sharebutton";
-import NextButton from "@/src/ui/components/atoms/NextButton";
+import ShareButton from "@/src/ui/components/atoms/ShareButton";
 import { urlPath } from "@/src/constants/common";
 import { useRouter } from "next/navigation";
+import CustomButton from "@/src/ui/components/atoms/CustomButton";
+import { CheckIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 
 const Page = () => {
   const [transferData, setTransferData] = useState({
@@ -19,19 +20,7 @@ const Page = () => {
       <div className="flex-1 flex flex-col items-center justify-center">
         {/* 노란색 체크 원 */}
         <div className="w-[60px] h-[60px] rounded-full bg-main02 flex items-center justify-center mb-6">
-          <svg
-            width="42"
-            height="42"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9.55 18L3.85 12.3L5.275 10.875L9.55 15.15L18.725 5.975L20.15 7.4L9.55 18Z"
-              fill="black"
-              strokeWidth="1.5"
-            />
-          </svg>
+          <CheckIcon className="w-[42px] h-[42px]" />
         </div>
 
         {/* 텍스트 영역 */}
@@ -42,15 +31,7 @@ const Page = () => {
           </p>
           <div className="flex items-center justify-center gap-1 text-[14px] text-[#666666]">
             {transferData.bankName} {transferData.accountNumber}
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M6 12L10 8L6 4" stroke="#666666" strokeWidth="1.5" />
-            </svg>
+            <ChevronRightIcon width="16" height="16" stroke="#666666" strokeWidth={0.5} />
           </div>
         </div>
 
@@ -62,17 +43,11 @@ const Page = () => {
 
       {/* 하단 버튼 영역 */}
       <div className="px-5 pb-8">
-        <div className="flex gap-1">
-          <ShareButton width="w-[84px]" height="h-[62px]" />
-          <NextButton
-            text="확인"
-            width="w-[285px]"
-            height="h-[62px]"
-            padding="px-[82px] py-[22px]"
-            radius="rounded-[11px]"
-            bgColor="bg-main02"
-            onClick={() => router.push(urlPath.HOME)}
-          />
+        <div className="flex gap-2">
+          <ShareButton rounded={true} />
+          <CustomButton rounded={true} onClick={() => router.push(urlPath.HOME)}>
+            확인
+          </CustomButton>
         </div>
       </div>
     </main>

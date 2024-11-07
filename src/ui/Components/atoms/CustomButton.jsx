@@ -3,9 +3,9 @@
 import React from "react";
 
 const sizes = {
-  small: "w-[76px] h-[60px]",
-  medium: "w-[128px] h-[60px]",
-  large: "w-[400px] h-[60px]",
+  small: "w-[131px] h-[60px]",
+  medium: "w-[262px] h-[60px]",
+  large: "w-[393px] h-[60px]",
 };
 
 const colors = {
@@ -28,7 +28,7 @@ const CustomButton = ({
   return (
     <button
       className={`flex items-center justify-center ${colors[color]} ${sizes[size]} ${
-        rounded ? "rounded-md" : "rounded-none"
+        rounded ? "rounded-[11px]" : "rounded-none"
       } ${className}`}
       onClick={onClick}
     >

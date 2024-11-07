@@ -2,6 +2,7 @@
 import { Box, Flex } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { ArrowLeftIcon, GearIcon } from "@radix-ui/react-icons";
+import CustomButton from "@/src/ui/components/atoms/CustomButton";
 
 export default function TopBar({ name, balance, accountNumber }) {
   const router = useRouter();
@@ -44,12 +45,12 @@ export default function TopBar({ name, balance, accountNumber }) {
         <h2 className="text-3xl font-bold">{Number(balance).toLocaleString()}원</h2>
       </Flex>
       <Flex justify="between" direction="row" className="gap-3 m-8 mt-4">
-        <button onClick={() => {}} className="py-3 text-white rounded-lg bg-black/10 px-9">
+        <CustomButton size="small" color="black10" rounded={true} onClick={() => {}}>
           이체하기
-        </button>
-        <button onClick={() => {}} className="py-3 text-white rounded-lg bg-black/10 px-9">
+        </CustomButton>
+        <CustomButton size="small" color="black10" rounded={true} onClick={() => {}}>
           가져오기
-        </button>
+        </CustomButton>
       </Flex>
     </Flex>
   );

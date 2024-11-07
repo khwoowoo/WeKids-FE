@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { redirect } from "next/navigation";
 import KeyPad from "@/src/ui/components/atoms/KeyPad";
-import NextButton from "@/src/ui/components/atoms/NextButton";
 import { useTransactionStore } from "@/src/stores/transactionStore";
 import TransferAmountDisplay from "@/src/ui/components/transactions/transfer/TransferAmoutDisplay";
 import TransferOptions from "@/src/ui/components/transactions/transfer/TransferOptions";
 import TransferModal from "@/src/ui/components/transactions/transfer/TransferModal";
 import { urlPath } from "@/src/constants/common";
+import CustomButton from "@/src/ui/components/atoms/CustomButton";
 
 const dummyData = [
   { id: 1, name: "구자빈", account: "111-111-111", bank: "우리은행" },
@@ -22,17 +22,22 @@ const sendUser = { name: "김우리", account: "666-666-666", balance: 50000000,
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
-  const { selectedAccount, setSelectedAccount, transferAmount, setTransferAmount, clearTransferData } =
-    useTransactionStore();
+  const {
+    selectedAccount,
+    setSelectedAccount,
+    transferAmount,
+    setTransferAmount,
+    clearTransferData,
+  } = useTransactionStore();
 
-    useEffect(() => {
-        if (isShaking) {
-          const timeout = setTimeout(() => {
-            setIsShaking(false);
-          }, 500);
-          return () => clearTimeout(timeout);
-        }
-    }, [isShaking]);
+  useEffect(() => {
+    if (isShaking) {
+      const timeout = setTimeout(() => {
+        setIsShaking(false);
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [isShaking]);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -66,16 +71,15 @@ export default function Page() {
     }
   };
 
-
   if (!selectedAccount) redirect(urlPath.ACCOUNT_LIST);
 
   const handleUserChange = (e) => {
     const selectedName = e.target.value;
     const user = dummyData.find((user) => user.name === selectedName); // dummyData
     if (user) {
-        setSelectedAccount(user);
+      setSelectedAccount(user);
     }
-};
+  };
 
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-gray-100">
@@ -95,7 +99,7 @@ export default function Page() {
         <div className="w-[393px] mt-9">
           <KeyPad number={handleNumberClick} buttonHeight="h-14" buttonWidth="w-[393px]" />
         </div>
-        <NextButton onClick={openModal} width="w-[393px]" radius="" />
+        <CustomButton onClick={openModal}>다음</CustomButton>
       </div>
       <TransferModal
         isModalOpen={isModalOpen}

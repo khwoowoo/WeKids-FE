@@ -1,7 +1,3 @@
-// components/EnvelopeIcon.js
-
-export default function AlarmIcon() {
-  return (
     <svg
       width="24"
       height="24"
@@ -17,5 +13,4 @@ export default function AlarmIcon() {
         strokeLinejoin="round"
       />
     </svg>
-  );
-}
+

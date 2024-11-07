@@ -1,6 +1,6 @@
 "use client";
 
-import Copy from "@/public/icons/CopyIcon";
+import Copy from "@/public/icons/copyIcon.svg";
 import useAccountInfoStore from "@/src/stores/useAccountInfoStore";
 import { characterInfoMap } from "@/src/util/characterInfo"; // 상대 경로로 불러오기
 import { Text } from "@radix-ui/themes";
@@ -47,7 +47,7 @@ const BlueCardBox = () => {
         </Text>
       </div>
       <div className="absolute right-0 top-0 ">
-        <img src="/images/account_weebee.svg" alt="Mascot" />
+        <img src="/images/account_weebeeIcon.svg" alt="Mascot" />
       </div>
       <Text className="wooridaumB text-[28px] mt-[48px] text-right">
         {selectedAccount.balance.toLocaleString()} 원

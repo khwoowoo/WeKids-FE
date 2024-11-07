@@ -1,6 +1,11 @@
 "use client";
+<<<<<<< HEAD:src/app/(transfer)/transfer/page.jsx
 import React, { useState } from "react";
 import { redirect, useRouter } from "next/navigation";
+=======
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+>>>>>>> 7bebcd2e51278d254aea7278482761fc02abe3b7:src/app/account-list/account/page.jsx
 import KeyPad from "@/src/ui/components/atoms/KeyPad";
 import NextButton from "@/src/ui/components/atoms/NextButton";
 import useTransactionStore from "@/src/stores/useTransactionStore.js";
@@ -22,13 +27,17 @@ export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const router = useRouter();
-  const {
-    selectedAccount,
-    setSelectedAccount,
-    transferAmount,
-    setTransferAmount,
-    clearTransferData,
-  } = useTransactionStore();
+  const { selectedAccount, setSelectedAccount, transferAmount, setTransferAmount, clearTransferData } =
+    useTransactionStore();
+
+    useEffect(() => {
+        if (isShaking) {
+          const timeout = setTimeout(() => {
+            setIsShaking(false);
+          }, 500);
+          return () => clearTimeout(timeout);
+        }
+    }, [isShaking]);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -73,6 +82,14 @@ export default function Page() {
 
   if (!selectedAccount) redirect("/account-list");
 
+  const handleUserChange = (e) => {
+    const selectedName = e.target.value;
+    const user = dummyData.find((user) => user.name === selectedName); // dummyData
+    if (user) {
+        setSelectedAccount(user);
+    }
+};
+
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-gray-100">
       <TransferAmountDisplay
@@ -80,7 +97,7 @@ export default function Page() {
         transferAmount={transferAmount}
         sendUser={sendUser}
         isShaking={isShaking}
-        handleUserChange={(e) => setSelectedAccount(e.target.value)}
+        handleUserChange={(e) => handleUserChange(e)}
         routeControll={routeControll}
       />
       <div className="bottom-0 fixed">

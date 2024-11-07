@@ -1,31 +1,31 @@
-'use client'
+"use client";
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
-import TransactionList from "@/src/ui/Components/atoms/TransferItem";
+import React from "react";
+import { useRouter } from "next/navigation";
+import TransactionList from "@/src/ui/components/atoms/TransferItem";
 import useTransactionStore from "@/src/stores/useTransactionStore";
 
 const dummyData = [
-    { id: 1, name: '구자빈', account: '111-111-111' },
-    { id: 2, name: '강현우', account: '222-222-222' },
-    { id: 3, name: '안찬웅', account: '333-333-333' },
-    { id: 4, name: '조예은', account: '444-444-444' },
-    { id: 5, name: '최윤정', account: '555-555-555' },
-    { id: 6, name: '김우리', account: '666-666-666' },
-    { id: 7, name: '가우리', account: '777-777-777' },
-    { id: 8, name: '나우리', account: '888-888-888' },
-    { id: 9, name: '다우리', account: '999-999-999' },
-    { id: 10, name: '라우리', account: '000-000-000' },
+  { id: 1, name: "구자빈", account: "111-111-111" },
+  { id: 2, name: "강현우", account: "222-222-222" },
+  { id: 3, name: "안찬웅", account: "333-333-333" },
+  { id: 4, name: "조예은", account: "444-444-444" },
+  { id: 5, name: "최윤정", account: "555-555-555" },
+  { id: 6, name: "김우리", account: "666-666-666" },
+  { id: 7, name: "가우리", account: "777-777-777" },
+  { id: 8, name: "나우리", account: "888-888-888" },
+  { id: 9, name: "다우리", account: "999-999-999" },
+  { id: 10, name: "라우리", account: "000-000-000" },
 ];
 export default function Page() {
   const router = useRouter();
   const setSelectedAccount = useTransactionStore((state) => state.setSelectedAccount);
-  const {selectedAccount} = useTransactionStore();
+  const { selectedAccount } = useTransactionStore();
   const handleSelect = (user) => {
     setSelectedAccount({
-        id: user.id,
-        name: user.name,
-        account: user.account
+      id: user.id,
+      name: user.name,
+      account: user.account,
     });
     router.push(`/account-list/account`);
   };

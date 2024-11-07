@@ -78,6 +78,7 @@ export const TransactionsView = () => {
         {filteredTransactions.map((transaction, index) => (
           <TransactionItem
             key={index}
+            id={index + 1} // TODO: 임시로 index+1로 넣어놓음 transactionId가 들어가야함
             date={transaction.date}
             title={transaction.title}
             amount={transaction.amount}

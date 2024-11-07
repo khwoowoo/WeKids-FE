@@ -3,6 +3,7 @@ import { Box, Flex } from "@radix-ui/themes";
 import { useRouter } from "next/navigation";
 import { ArrowLeftIcon, GearIcon } from "@radix-ui/react-icons";
 import CustomButton from "@/src/ui/components/atoms/CustomButton";
+import { urlPath } from "@/src/constants/common";
 
 export default function TopBar({ name, balance, accountNumber }) {
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function TopBar({ name, balance, accountNumber }) {
         <Box onClick={handleBackClick}>
           <ArrowLeftIcon className="w-5 h-5 text-white" />
         </Box>
-        <h1>{name}의 통장</h1>
+        <h1 className="text-white">{name}의 통장</h1>
         <Box onClick={handleSettingsClick}>
           <GearIcon className="w-5 h-5 text-white" />
         </Box>
@@ -42,10 +43,17 @@ export default function TopBar({ name, balance, accountNumber }) {
         >
           {accountNumber}
         </p>
-        <h2 className="text-3xl font-bold">{Number(balance).toLocaleString()}원</h2>
+        <h2 className="text-white text-3xl font-bold">{Number(balance).toLocaleString()}원</h2>
       </Flex>
       <Flex justify="between" direction="row" className="gap-3 m-8 mt-4">
-        <CustomButton size="small" color="black10" rounded={true} onClick={() => {}}>
+        <CustomButton
+          size="small"
+          color="black10"
+          rounded={true}
+          onClick={() => {
+            router.push(urlPath.TRANSFER);
+          }}
+        >
           이체하기
         </CustomButton>
         <CustomButton size="small" color="black10" rounded={true} onClick={() => {}}>

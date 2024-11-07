@@ -27,7 +27,7 @@ export default function Page() {
       name: user.name,
       account: user.account,
     });
-    router.push(`/account-list/account`);
+    router.push(`/transfer`);
   };
   return (
     <div className="max-w-md mx-auto bg-gray-100 shadow-lg h-screen flex flex-col">

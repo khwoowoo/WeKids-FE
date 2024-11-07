@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import KeyPad from "@/src/ui/components/atoms/KeyPad";
 import NextButton from "@/src/ui/components/atoms/NextButton";
 import useTransactionStore from "@/src/stores/useTransactionStore.js";
@@ -22,8 +22,13 @@ export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const router = useRouter();
-  const { selectedAccount, transferAmount, setTransferAmount, clearTransferData } =
-    useTransactionStore();
+  const {
+    selectedAccount,
+    setSelectedAccount,
+    transferAmount,
+    setTransferAmount,
+    clearTransferData,
+  } = useTransactionStore();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -62,11 +67,11 @@ export default function Page() {
       router.push("/account-list");
       clearTransferData();
     } else {
-      router.push("/account-list/account/done");
+      router.push("/transfer/done");
     }
   };
 
-  if (!selectedAccount) return null;
+  if (!selectedAccount) redirect("/account-list");
 
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-gray-100">

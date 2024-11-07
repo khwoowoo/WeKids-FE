@@ -1,13 +1,13 @@
 "use client";
-
-import { redirect, useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
+import { redirect, useRouter } from "next/navigation";
 import KeyPad from "@/src/ui/components/atoms/KeyPad";
 import NextButton from "@/src/ui/components/atoms/NextButton";
-import { useTransactionStore } from "@/src/stores/transactionStore";
+import {useTransactionStore} from "@/src/stores/transactionStore";
 import TransferAmountDisplay from "@/src/ui/components/transactions/transfer/TransferAmoutDisplay";
 import TransferOptions from "@/src/ui/components/transactions/transfer/TransferOptions";
 import TransferModal from "@/src/ui/components/transactions/transfer/TransferModal";
+import {urlPath} from "@/src/constants/common";
 
 const dummyData = [
   { id: 1, name: "구자빈", account: "111-111-111", bank: "우리은행" },
@@ -23,22 +23,17 @@ export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const router = useRouter();
-  const {
-    selectedAccount,
-    setSelectedAccount,
-    transferAmount,
-    setTransferAmount,
-    clearTransferData,
-  } = useTransactionStore();
+  const { selectedAccount, setSelectedAccount, transferAmount, setTransferAmount, clearTransferData } =
+    useTransactionStore();
 
-  useEffect(() => {
-    if (isShaking) {
-      const timeout = setTimeout(() => {
-        setIsShaking(false);
-      }, 500);
-      return () => clearTimeout(timeout);
-    }
-  }, [isShaking]);
+    useEffect(() => {
+        if (isShaking) {
+          const timeout = setTimeout(() => {
+            setIsShaking(false);
+          }, 500);
+          return () => clearTimeout(timeout);
+        }
+    }, [isShaking]);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -74,22 +69,22 @@ export default function Page() {
 
   const routeControll = (text) => {
     if (text === "cancel") {
-      router.push("/account-list");
+      router.push(urlPath.ACCOUNT_LIST);
       clearTransferData();
     } else {
-      router.push("/transfer/done");
+      router.push(urlPath.DONE);
     }
   };
 
-  if (!selectedAccount) redirect("/account-list");
+  if (!selectedAccount) redirect(urlPath.ACCOUNT_LIST);
 
   const handleUserChange = (e) => {
     const selectedName = e.target.value;
     const user = dummyData.find((user) => user.name === selectedName); // dummyData
     if (user) {
-      setSelectedAccount(user);
+        setSelectedAccount(user);
     }
-  };
+};
 
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-gray-100">

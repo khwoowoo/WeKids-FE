@@ -4,6 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import TransactionList from "@/src/ui/components/atoms/TransferItem";
 import { useTransactionStore } from "@/src/stores/transactionStore";
+import {urlPath} from "@/src/constants/common";
 
 const dummyData = [
   { id: 1, name: "구자빈", account: "111-111-111" },
@@ -19,15 +20,14 @@ const dummyData = [
 ];
 export default function Page() {
   const router = useRouter();
-  const { setSelectedAccount } = useTransactionStore((state) => state.setSelectedAccount);
-  const { selectedAccount } = useTransactionStore();
+  const { selectedAccount, setSelectedAccount } = useTransactionStore();
   const handleSelect = (user) => {
     setSelectedAccount({
       id: user.id,
       name: user.name,
       account: user.account,
     });
-    router.push(`/transfer`);
+    router.push(urlPath.TRANSFER);
   };
   return (
     <div className="max-w-md mx-auto bg-gray-100 shadow-lg h-screen flex flex-col">

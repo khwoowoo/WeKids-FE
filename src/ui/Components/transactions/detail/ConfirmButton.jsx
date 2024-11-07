@@ -2,12 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import React from "react";
+import {urlPath} from "@/src/constants/common";
 
 const ConfirmButton = () => {
   const router = useRouter();
 
   const handleClickConfirm = () => {
-    router.push("/transaction-history");
+    router.push(urlPath.TRANSACTION_HISTORY);
   };
 
   return (

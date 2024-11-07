@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import ShareButton from "@/src/ui/components/atoms/Sharebutton";
 import NextButton from "@/src/ui/components/atoms/NextButton";
+import {urlPath} from "@/src/constants/common";
 
 const Page = () => {
   const [transferData, setTransferData] = useState({
@@ -69,6 +70,7 @@ const Page = () => {
             padding="px-[82px] py-[22px]"
             radius="rounded-[11px]"
             bgColor="bg-[#2483C5]"
+            onClick={()=>router.push(urlPath.HOME)}
           />
         </div>
       </div>

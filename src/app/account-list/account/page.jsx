@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import KeyPad from "@/src/ui/components/atoms/KeyPad";
 import NextButton from "@/src/ui/components/atoms/NextButton";
@@ -22,8 +22,17 @@ export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const router = useRouter();
-  const { selectedAccount, transferAmount, setTransferAmount, clearTransferData } =
+  const { selectedAccount, setSelectedAccount, transferAmount, setTransferAmount, clearTransferData } =
     useTransactionStore();
+
+    useEffect(() => {
+        if (isShaking) {
+          const timeout = setTimeout(() => {
+            setIsShaking(false);
+          }, 500);
+          return () => clearTimeout(timeout);
+        }
+    }, [isShaking]);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -66,6 +75,14 @@ export default function Page() {
     }
   };
 
+  const handleUserChange = (e) => {
+    const selectedName = e.target.value;
+    const user = dummyData.find((user) => user.name === selectedName); // dummyData
+    if (user) {
+        setSelectedAccount(user);
+    }
+};
+
   if (!selectedAccount) return null;
 
   return (
@@ -75,7 +92,7 @@ export default function Page() {
         transferAmount={transferAmount}
         sendUser={sendUser}
         isShaking={isShaking}
-        handleUserChange={(e) => setSelectedAccount(e.target.value)}
+        handleUserChange={(e) => handleUserChange(e)}
         routeControll={routeControll}
       />
       <div className="bottom-0 fixed">

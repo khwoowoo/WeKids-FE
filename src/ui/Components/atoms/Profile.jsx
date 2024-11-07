@@ -7,7 +7,7 @@ const PROFILE_DEFAULT = {
   height: "h-[60px]",
   bgColor: "bg-white",
   borderColor: "border-2 border-gray-200",
-  imagePath: "/images/Avatar.svg",
+  imagePath: "/images/avatarIcon.svg",
   radius: "rounded-full",
 };
 

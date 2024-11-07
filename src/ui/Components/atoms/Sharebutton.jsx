@@ -1,5 +1,5 @@
 import React from "react";
-import Upload from "@/public/icons/Upload";
+import { Share2Icon } from "@radix-ui/react-icons";
 
 const SHARE_BUTTON_DEFAULT = {
   width: "w-[76px]",
@@ -32,7 +32,7 @@ const ShareButton = ({
       `}
     >
       <div>
-        <Upload />
+        <Share2Icon className="w-6 h-6" />
       </div>
     </button>
   );

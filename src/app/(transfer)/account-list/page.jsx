@@ -31,7 +31,7 @@ export default function Page() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-gray-100 shadow-lg h-screen flex flex-col">
+    <div className="flex flex-col h-screen max-w-md mx-auto bg-gray-100 shadow-lg">
       <div className="flex justify-between p-4">
         <h1 className="text-lg font-bold">이체</h1>
         <button className="text-gray-500" onClick={() => router.push(urlPath.HOME)}>

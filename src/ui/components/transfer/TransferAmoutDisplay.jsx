@@ -12,21 +12,14 @@ const dummyData = [
     { id: 5, name: '최윤정', account: '555-555-555', bank: '우리은행' },
 ];
 
-const TransferAmountDisplay = ({ 
-    selectedAccount, 
-    transferAmount, 
-    clearTransferData,
-    sendUser, 
-    isShaking, 
-    handleUserChange, 
-}) => {
+const TransferAmountDisplay = ({ selectedAccount, transferAmount, clearTransferData, sendUser, isShaking, handleUserChange }) => {
+    const router = useRouter();
+
     useEffect(() => {
         if (!selectedAccount) {
             router.back();
         }
-    }, [selectedAccount]);
-    
-    const router = useRouter();
+    }, [selectedAccount, router]);
 
     const btnHandler = (action) => {
         clearTransferData();
@@ -34,14 +27,14 @@ const TransferAmountDisplay = ({
             if (action === 'back') {
                 router.back();
             } else if (action === 'cancel') {
-                router.push(urlPath.ACCOUNT_LIST);
+                router.push('/path/to/account_list');
             }
         }, 0);
     };
 
     return (
-        <div className="flex flex-col items-center w-full p-4 absolute h-3/5">
-            <div className="flex justify-between items-center w-full mb-4">
+        <div className="absolute flex flex-col items-center w-full p-4 h-3/5">
+            <div className="flex items-center justify-between w-full mb-4">
             <Box onClick={() => btnHandler("back")}>
           <ArrowLeftIcon className="w-5 h-5 text-black cursor-pointer" />
             </Box>
@@ -65,11 +58,11 @@ const TransferAmountDisplay = ({
                 </div>
                 <button className="text-lg" onClick={() => btnHandler("cancel")}>취소</button>
             </div>
-            <div className="flex flex-col items-center justify-center h-1/2 mt-8">
+            <div className="flex flex-col items-center justify-center mt-8 h-1/2">
                 <div className={`text-4xl font-bold ${isShaking ? 'text-red-600 shake-animation' : 'text-slate-900'}`}>
                     {transferAmount.toLocaleString()}원
                 </div>
-                <div className="text-red-600 mt-2">
+                <div className="mt-2 text-red-600">
                     {isShaking && `${sendUser.balance.toLocaleString()}원 까지만 이체 가능합니다.`}
                 </div>
             </div>

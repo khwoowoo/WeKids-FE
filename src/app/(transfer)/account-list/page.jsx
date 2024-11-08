@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import TransactionList from "@/src/ui/components/atoms/TransferItem";
 import { useTransactionStore } from "@/src/stores/transactionStore";

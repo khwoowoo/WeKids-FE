@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { CopyIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import { urlPath } from "@/src/constants/common";
+import Image from "next/image";
 
 const BlueCardBox = () => {
   const { selectedAccount } = useAccountInfoStore(); // Zustand에서 selectedAccount 가져오기
@@ -37,15 +38,21 @@ const BlueCardBox = () => {
       className={`${backgroundColorClass} w-[330px] h-[252px] text-white rounded-[10px] flex flex-col justify-between relative`}
     >
       {console.log("div " + backgroundColorClass)}
-      <div className="text-left px-5">
+      <div className="px-5 text-left">
         <div className="flex items-center space-x-2 mt-[25px]">
-          <Text className="wooridaumB text-sm">{selectedAccount.accountNumber}</Text>
+          <Text className="text-sm wooridaumB">{selectedAccount.accountNumber}</Text>
           <CopyIcon />
         </div>
         <Text className="wooridaumB text-xl mt-[32px]">{selectedAccount.name}</Text>
       </div>
-      <div className="absolute right-0 top-0 ">
-        <img src="/images/accountWeebeeImg.svg" alt="Mascot" />
+      <div className="absolute top-0 right-0 ">
+      <Image
+            src="/images/logoImg.svg"
+            alt="Logo"
+            width={500}  // 예상되는 이미지의 너비
+            height={60}  // 예상되는 이미지의 높이
+            className="w-auto h-6"
+        />
       </div>
       <Text className="wooridaumB text-[28px] mt-[48px] text-right">
         {selectedAccount.balance.toLocaleString()} 원
@@ -53,10 +60,10 @@ const BlueCardBox = () => {
       <div className="mt-auto">
         <div className="w-full h-[1px] bg-white/20"></div>
         <div className="flex text-white">
-          <button className="flex-1 py-4 text-center border-r border-white/20 hover:bg-white/10 transition-colors" onClick={() => router.push(urlPath.TRANSACTION_HISTORY)}>
+          <button className="flex-1 py-4 text-center transition-colors border-r border-white/20 hover:bg-white/10" onClick={() => router.push(urlPath.TRANSACTION_HISTORY)}>
             조회
           </button>
-          <button className="flex-1 py-4 text-center hover:bg-white/10 transition-colors" onClick={() => router.push(urlPath.ACCOUNT_LIST)}>
+          <button className="flex-1 py-4 text-center transition-colors hover:bg-white/10" onClick={() => router.push(urlPath.ACCOUNT_LIST)}>
             이체
           </button>
         </div>

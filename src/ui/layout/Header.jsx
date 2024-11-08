@@ -1,15 +1,16 @@
 // components/Header.js
 import { EnvelopeClosedIcon, PersonIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center px-5 py-3 bg-gray-100 border-b border-gray-300">
-      <img src="/images/logoImg.svg" alt="Logo" className="h-6 w-auto" />
+    <header className="flex items-center justify-between px-5 py-3 bg-gray-100 border-b border-gray-300">
+      <Image src="/images/logoImg.svg" width={100} height={100} alt="Logo" className="w-auto h-6" />
       <div className="flex space-x-4">
         {/* 알람 아이콘 */}
-        <EnvelopeClosedIcon className="h-6 w-6 cursor-pointer" />
+        <EnvelopeClosedIcon className="w-6 h-6 cursor-pointer" />
         {/* 프로필 아이콘 */}
-        <PersonIcon className="h-6 w-6 cursor-pointer" />
+        <PersonIcon className="w-6 h-6 cursor-pointer" />
       </div>
     </header>
   );

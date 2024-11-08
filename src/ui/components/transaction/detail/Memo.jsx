@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Memo = ({ data }) => {
   const [memo, setMemo] = useState(data);

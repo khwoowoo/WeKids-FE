@@ -47,6 +47,7 @@ export default function TopBar({ name, balance, accountNumber }) {
       </Flex>
       <Flex justify="between" direction="row" className="gap-3 m-8 mt-4">
         <CustomButton
+          className="text-R-14"
           size="small"
           color="black10"
           rounded={true}
@@ -54,9 +55,15 @@ export default function TopBar({ name, balance, accountNumber }) {
             router.push(urlPath.TRANSFER);
           }}
         >
-          이체하기
+          용돈주기
         </CustomButton>
-        <CustomButton size="small" color="black10" rounded={true} onClick={() => {}}>
+        <CustomButton
+          className="text-R-14"
+          size="small"
+          color="black10"
+          rounded={true}
+          onClick={() => {}}
+        >
           가져오기
         </CustomButton>
       </Flex>
